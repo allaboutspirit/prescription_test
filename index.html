@@ -35,6 +35,8 @@
     --c-back:#3E6B8A;
     --c-prev:#5A8F7B;
     --c-sleep:#4A4E69;
+    --c-aging:#7A9E7E;
+    --c-cancer:#A65E4E;
   }
 
   *{box-sizing:border-box;}
@@ -82,13 +84,13 @@
   }
   .clinic-mark .mark-text{flex:1;line-height:1.4;}
 
-  /* ---------- 인트로 (다크 네이비 전체 배경) ---------- */
+  /* ---------- 인트로 (밝은 블루 톤) ---------- */
   #screen-intro{
     justify-content:space-between;
     min-height:100vh;
     position:relative;
     overflow:hidden;
-    background:var(--ink);
+    background:linear-gradient(180deg,#A9C7EA 0%,#C2D8F1 55%,#D9E8F8 100%);
     padding:44px 22px 40px;
   }
   #screen-intro::after{
@@ -97,7 +99,7 @@
     right:-70px; top:-70px;
     width:240px; height:240px;
     border-radius:50%;
-    background:rgba(120,170,230,0.16);
+    background:rgba(60,110,180,0.20);
     pointer-events:none;
   }
   #screen-intro > *{ position:relative; z-index:1; }
@@ -106,60 +108,51 @@
     display:inline-block;
     font-family:'Noto Sans KR',sans-serif;
     font-size:11.5px;font-weight:700;letter-spacing:.04em;
-    color:#C9D8F0;
-    border:1px solid rgba(255,255,255,0.28);
+    color:var(--ink);
+    border:1px solid rgba(27,58,110,0.45);
+    background:rgba(255,255,255,0.7);
     padding:5px 13px;
     margin-bottom:18px;
   }
   .intro-title{
     font-family:'Noto Sans KR',sans-serif;
     font-weight:900;font-size:28px;line-height:1.35;
-    color:#fff;margin:0 0 10px;
+    color:var(--ink);margin:0 0 10px;
   }
   .intro-meta{
-    font-size:12.5px;color:rgba(255,255,255,0.62);
+    font-size:12.5px;color:#2F5185;
     margin-bottom:22px;
   }
   .intro-icons{
     display:grid;
-    grid-template-columns:repeat(5, 1fr);
-    gap:10px;
-    max-width:320px;
+    grid-template-columns:repeat(8, 1fr);
+    gap:6px;
+    max-width:340px;
     margin:0 auto 26px;
   }
   .intro-icons .icon-box{
     aspect-ratio:1/1;
     display:flex;align-items:center;justify-content:center;
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.22);
+    background:#fff;
+    border:1px solid var(--line);
     border-radius:4px;
   }
   .intro-icons svg{
-    width:60%;height:60%;color:rgba(255,255,255,0.75);
+    width:60%;height:60%;color:var(--ink);
   }
-  .intro-title em{
-    font-style:normal;color:#fff;
-    box-shadow:inset 0 -10px 0 rgba(255,255,255,0.16);
-  }
-  .intro-subtitle{
-    display:block;font-family:'Noto Sans KR',sans-serif;
-    font-weight:500;font-size:15px;color:rgba(255,255,255,0.7);
-    letter-spacing:.02em;margin-top:8px;
-  }
-  .intro-desc{font-size:14.5px;line-height:1.7;color:rgba(255,255,255,0.72);margin:0 0 22px;}
   .intro-chart{
-    border:1px solid rgba(255,255,255,0.2);
-    background:rgba(255,255,255,0.07);
+    border:1px solid var(--line);
+    background:#fff;
     border-radius:4px;
     padding:16px 18px;
     font-size:13px;line-height:1.8;
-    color:rgba(255,255,255,0.7);
+    color:var(--ink-soft);
     margin-bottom:8px;
     text-align:left;
   }
-  .intro-chart b{color:#fff;}
+  .intro-chart b{color:var(--ink);}
   .intro-footnote{
-    font-size:11px;color:rgba(255,255,255,0.5);text-align:center;
+    font-size:11px;color:#2F5185;text-align:center;
     margin:14px 0 0;line-height:1.6;
   }
   .btn{
@@ -174,8 +167,8 @@
     background:transparent;border:1.5px solid var(--ink);color:var(--ink);
   }
   .btn-red{background:var(--rx-red);}
-  .btn-gold{background:var(--gold);}
-  #screen-intro .btn{ margin-top:24px; box-shadow:0 6px 18px rgba(0,0,0,0.28); }
+  .btn-gold{background:var(--gold);color:var(--ink);}
+  #screen-intro .btn{ margin-top:24px; box-shadow:0 6px 16px rgba(27,58,110,0.18); }
 
   /* ---------- 문진 (질문) ---------- */
   #screen-quiz{gap:22px;}
@@ -187,9 +180,9 @@
     font-family:'Noto Sans KR',sans-serif;font-size:11.5px;
     color:var(--ink-soft);letter-spacing:.08em;
   }
-  .tally{display:flex;gap:4px;}
+  .tally{display:flex;gap:3px;}
   .tally i{
-    width:16px;height:16px;border:1.4px solid var(--line);
+    width:11px;height:11px;border:1.4px solid var(--line);
     border-radius:2px;display:block;
   }
   .tally i.done{background:var(--ink);border-color:var(--ink);}
@@ -202,7 +195,7 @@
 
   .q-text{
     font-family:'Noto Sans KR',sans-serif;font-weight:700;
-    font-size:21px;line-height:1.5;margin:0 0 22px;
+    font-size:21px;line-height:1.5;margin:0 0 22px;word-break:keep-all;
   }
   .options{display:flex;flex-direction:column;gap:11px;}
   .opt-btn{
@@ -266,6 +259,9 @@
     padding:4px 10px;border-radius:20px;color:#fff;white-space:nowrap;
   }
   .dx-reason{font-size:13.5px;line-height:1.7;color:var(--ink-soft);margin-bottom:18px;}
+  .dx-note{font-size:12.5px;line-height:1.6;color:var(--ink-soft);background:var(--paper-alt);border-left:3px solid var(--line);padding:9px 12px;margin:-6px 0 18px;}
+  .dx-note.hidden{display:none;}
+  .dx-reason u{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;color:var(--ink);font-weight:500;}
 
   .rx-ranklist{border-top:1.5px dashed var(--line);padding-top:14px;}
   .rank-row{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);}
@@ -340,7 +336,7 @@
     <div class="intro-top">
       <div class="intake-label">자가테스트</div>
       <h1 class="intro-title">당신에게 필요한<br>건강 처방은?</h1>
-      <div class="intro-meta">총 10문항 · 예상 소요시간 1분</div>
+      <div class="intro-meta">총 16문항 · 예상 소요시간 2분</div>
       <div class="intro-icons" id="intro-icons"></div>
 
       <div class="intro-chart">
@@ -360,7 +356,7 @@
     <div class="clinic-mark"><span class="mark-text">당신에게 필요한 건강 처방</span></div>
 
     <div class="chart-progress">
-      <span class="chart-progress-label" id="progress-label">QUESTION · 문항 1 / 9</span>
+      <span class="chart-progress-label" id="progress-label">QUESTION · 문항 1 / 16</span>
       <div class="tally" id="tally"></div>
     </div>
 
@@ -386,9 +382,9 @@
 
       <div class="dx-row">
         <div class="dx-name" id="dx-name"></div>
-        <div class="dx-match" id="dx-match"></div>
       </div>
       <p class="dx-reason" id="dx-reason"></p>
+      <p class="dx-note hidden" id="dx-note"></p>
 
       <div class="rx-ranklist" id="rx-ranklist"></div>
 
@@ -423,161 +419,219 @@
 */
 const CATS = {
   glu:   {name:"혈당관리",     round:2,  expert:"조영민 교수", color:"#C97B3E",
-          reason:"식후 나른함과 혈당 변화 신호가 감지되었습니다. 혈당 관리가 우선적으로 필요해 보입니다.",
+          eventTitle:"이달의 처방전 2 - 가장 과학적인 혈당 스파이크 솔루션",
+          reason:"식후 나른함과 혈당 변화 신호가 감지되었습니다. <u>혈당 관리가 우선적으로 필요</u>해 보입니다.",
           bookTitle:"혈당 스파이크 제로", bookCover:"https://image.yes24.com/goods/149661560/XL",
           bookLink:"https://www.yes24.com/product/goods/149661560",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21568906"},
   diet:  {name:"다이어트",     round:3,  expert:"이성민 의사", color:"#B2504A",
-          reason:"체중 변화와 요요가 반복되는 패턴이 확인되었습니다. 체계적인 체중 관리 처방이 필요합니다.",
+          eventTitle:"이달의 처방전 3 - 호르몬 다이어트의 시대가 왔다",
+          reason:"체중 변화와 요요가 반복되는 패턴이 확인되었습니다. <u>체계적인 체중 관리 처방</u>이 필요합니다.",
           bookTitle:"성공적인 다이어트를 위한 위고비(GLP-1) 사용설명서", bookCover:"https://image.yes24.com/goods/153039075/XL",
           bookLink:"https://www.yes24.com/product/goods/153039075",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21703000"},
   musc:  {name:"근력운동",     round:4,  expert:"이금호 트레이너", color:"#4F7942",
-          reason:"근력 저하로 인한 체력 저하 신호가 뚜렷합니다. 근력 회복이 시급한 처방으로 진단됩니다.",
+          eventTitle:"이달의 처방전 4 - 달라진 몸에는 달라진 운동이 필요하다",
+          reason:"근력 저하로 인한 체력 저하 신호가 뚜렷합니다. <u>근력 회복이 시급한 처방</u>으로 진단됩니다.",
           bookTitle:"100세 근력", bookCover:"https://image.yes24.com/goods/163500163/XL",
           bookLink:"https://www.yes24.com/product/goods/163500163",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21789284"},
   horm:  {name:"호르몬",       round:5,  expert:"안철우 교수", color:"#8E6BA8",
-          reason:"호르몬 불균형에서 흔히 나타나는 신호들이 확인되었습니다. 호르몬 밸런스 처방이 필요합니다.",
+          eventTitle:"이달의 처방전 5 - 하루 15분 호르몬 건강 습관 만들기",
+          reason:"호르몬 불균형에서 흔히 나타나는 신호들이 확인되었습니다. <u>호르몬 밸런스 처방</u>이 필요합니다.",
           bookTitle:"하루 15분 호르몬 혁명", bookCover:"https://image.yes24.com/goods/164652768/XL",
           bookLink:"https://www.yes24.com/product/goods/164652768",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21861171"},
   emer:  {name:"고령자 응급처치", round:6, expert:"김준성 교수", color:"#A83232",
-          reason:"돌발 상황 대처 역량 보강이 필요한 신호입니다. 응급처치 지식 처방을 권합니다.",
+          eventTitle:"이달의 처방전 6 - 고령자 응급 상황 빠른 대처가 필수다",
+          reason:"돌발 상황 대처 역량 보강이 필요한 신호입니다. <u>응급처치 지식 처방</u>을 권합니다.",
           bookTitle:"온 가족이 함께 알아야 할 고령자 응급대처법", bookCover:"https://image.yes24.com/goods/175305664/XL",
           bookLink:"https://www.yes24.com/product/goods/175305664",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21953830"},
   meta:  {name:"대사건강",     round:7,  expert:"우창윤 교수", color:"#C08A2E",
-          reason:"기초대사 저하로 보이는 신호가 여러 항목에서 확인되었습니다. 대사 회복 처방이 필요합니다.",
+          eventTitle:"이달의 처방전 7 - 평생 가볍게 살아가는 4주 대사 회복 프로젝트",
+          reason:"기초대사 저하로 보이는 신호가 여러 항목에서 확인되었습니다. <u>대사 회복 처방</u>이 필요합니다.",
           bookTitle:"살찌지 않는 몸", bookCover:"https://image.yes24.com/goods/181119788/XL",
           bookLink:"https://www.yes24.com/product/goods/181119788",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22041902"},
   back:  {name:"허리·자세",    round:8,  expert:"이대영 교수", color:"#3E6B8A",
-          reason:"허리와 자세 관련 불편함이 반복적으로 나타났습니다. 자세 교정 처방을 권합니다.",
+          eventTitle:"이달의 처방전 8 - 통증 완화를 넘어 '잘 사는 몸'을 위한 척추 재활의 정석",
+          reason:"허리와 자세 관련 불편함이 반복적으로 나타났습니다. <u>자세 교정 처방</u>을 권합니다.",
           bookTitle:"100년 쓰는 완벽 허리", bookCover:"https://image.yes24.com/goods/182493078/XL",
           bookLink:"https://www.yes24.com/product/goods/182493078",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22105533"},
   prev:  {name:"질병예방",     round:9,  expert:"오수연 교수", color:"#5A8F7B",
-          reason:"정기 검진과 예방 관리가 미뤄지고 있는 신호가 확인되었습니다. 예방 관리 처방이 우선입니다.",
+          eventTitle:"이달의 처방전 9 - 아프기 전에 챙겨야 할 몸이 좋아하는 숫자들",
+          reason:"정기 검진과 예방 관리가 미뤄지고 있는 신호가 확인되었습니다. <u>예방 관리 처방</u>이 우선입니다.",
           bookTitle:"질병 예방 세대", bookCover:"https://image.yes24.com/goods/186939270/XL",
           bookLink:"https://www.yes24.com/product/goods/186939270",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22296882"},
   sleep: {name:"수면",         round:10, expert:"이준용 의사", color:"#4A4E69",
-          reason:"수면의 질 저하가 전반적인 컨디션에 영향을 주고 있는 것으로 보입니다. 숙면 처방이 필요합니다.",
+          eventTitle:"이달의 처방전 10 - 무너진 몸과 마음을 되돌리는 수면의 과학",
+          reason:"수면의 질 저하가 전반적인 컨디션에 영향을 주고 있는 것으로 보입니다. <u>숙면 처방</u>이 필요합니다.",
           bookTitle:"자도 자도 피곤한 당신을 위한 수면 처방", bookCover:"https://image.yes24.com/goods/193984774/XL",
           bookLink:"https://www.yes24.com/product/goods/193984774",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22296882"},
   skin:  {name:"피부·알레르기(두드러기)", round:11, expert:"이동훈·강혜련 교수", color:"#C97FA0",
-          reason:"이유 없는 가려움과 피부 트러블이 반복되는 신호가 확인되었습니다. 두드러기·알레르기 처방이 필요합니다.",
+          eventTitle:"이달의 처방전 11 - 두드러기의 진짜 원인과 해결책",
+          reason:"이유 없는 가려움과 피부 트러블이 반복되는 신호가 확인되었습니다. <u>두드러기·알레르기 처방</u>이 필요합니다.",
           bookTitle:"두드러기, 참지 마세요", bookCover:"https://image.yes24.com/goods/194254561/XL",
           bookLink:"https://www.yes24.com/product/goods/194254561",
-          interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22340733"}
+          interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22340733"},
+  aging: {name:"노화·건강한 노년", round:12, expert:"김광일 교수", color:"#7A9E7E",
+          eventTitle:"이달의 처방전 12 - 오래 사는 법보다 중요한 후회 없이 나이 드는 법",
+          reason:"나이 듦에 대한 불안과 변화 신호가 확인되었습니다. <u>후회 없이 나이 드는 준비</u>가 필요합니다.",
+          bookTitle:"어떻게 나이 들지 배웁니다", bookCover:"https://image.yes24.com/goods/196681853/XL",
+          bookLink:"https://www.yes24.com/product/goods/196681853",
+          interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22458716"},
+  cancer:{name:"암 예방 생활습관", round:13, expert:"강형창 전문의", color:"#A65E4E",
+          eventTitle:"이달의 처방전 13 - 오늘의 생활 습관이 암을 이기는 몸을 만든다",
+          reason:"암 위험을 키우는 생활 습관 신호가 확인되었습니다. <u>일상 습관부터 점검</u>하는 처방이 필요합니다.",
+          bookTitle:"암을 이기는 몸", bookCover:"https://image.yes24.com/goods/197055132/XL",
+          bookLink:"https://www.yes24.com/product/goods/197055132",
+          interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22506377"}
 };
 
 const QUESTION_ICONS = [
-  // 1. 아침 기상 - 침대
   '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 26v-9a3 3 0 0 1 3-3h22a3 3 0 0 1 3 3v9"/><path d="M2 22h28"/><path d="M6 14V9a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v5"/></svg>',
-  // 2. 식사 후 - 김 나는 그릇
   '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16h24a10 10 0 0 1-20 0z"/><path d="M8 16c0-3 2-5 2-8"/><path d="M16 16c0-4 2-6 2-9"/><path d="M24 16c0-3-2-5-2-7"/></svg>',
-  // 3. 체중/다이어트 - 체중계
   '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="24" height="18" rx="3"/><circle cx="16" cy="19" r="6"/><path d="M16 19l3-3"/></svg>',
-  // 4. 몸을 움직일 때 - 발자국
   '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="10" rx="4" ry="6" transform="rotate(-18 10 10)"/><ellipse cx="22" cy="21" rx="4" ry="6" transform="rotate(18 22 21)"/></svg>',
-  // 5. 감정/컨디션 - 하트+맥박
-  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 27S4 19 4 11a6 6 0 0 1 12-2 6 6 0 0 1 12 2c0 8-12 16-12 16z"/><path d="M8 15h3l2-4 3 8 2-4h6"/></svg>',
-  // 6. 밤 시간 - 달과 별
-  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M23 21a10 10 0 1 1-9-15 8 8 0 0 0 9 15z"/><path d="M26 7v3M24.5 8.5h3"/></svg>',
-  // 7. 건강검진 - 클립보드 체크
-  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="5" width="20" height="24" rx="2"/><rect x="11" y="3" width="10" height="4" rx="1"/><path d="M10.5 16.5l3.5 3.5 7-7"/></svg>',
-  // 8. 피부 상태 - 물방울
-  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4s9 11 9 17a9 9 0 0 1-18 0c0-6 9-17 9-17z"/></svg>',
-  // 9. 허리·자세 - 스트레칭하는 사람
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16h12"/><rect x="5" y="10" width="5" height="12" rx="1.5"/><rect x="22" y="10" width="5" height="12" rx="1.5"/><path d="M2 14v4M30 14v4"/></svg>',
   '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="5.5" r="2.8"/><path d="M16 8.5v8"/><path d="M9.5 13l6.5-3.5 6.5 3.5"/><path d="M12 28l4-11 4 11"/></svg>',
-  // 10. 스트레스 반응 - 불꽃
-  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3c1 5-6 6-6 12a6 6 0 0 0 12 0c0-2.5-1.2-4-1.2-4s1 3.5-1.2 4.6c-1.5-3.5 1.2-5 1.2-7.6 0 0 2.5 2.5 2.5 7a7.5 7.5 0 1 1-15 0c0-7 7.7-8 7.7-12z"/></svg>'
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M23 21a10 10 0 1 1-9-15 8 8 0 0 0 9 15z"/><path d="M26 7v3M24.5 8.5h3"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3c1 5-6 6-6 12a6 6 0 0 0 12 0c0-2.5-1.2-4-1.2-4s1 3.5-1.2 4.6c-1.5-3.5 1.2-5 1.2-7.6 0 0 2.5 2.5 2.5 7a7.5 7.5 0 1 1-15 0c0-7 7.7-8 7.7-12z"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 27S4 19 4 11a6 6 0 0 1 12-2 6 6 0 0 1 12 2c0 8-12 16-12 16z"/><path d="M8 15h3l2-4 3 8 2-4h6"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4s9 11 9 17a9 9 0 0 1-18 0c0-6 9-17 9-17z"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="5" width="20" height="24" rx="2"/><rect x="11" y="3" width="10" height="4" rx="1"/><path d="M10.5 16.5l3.5 3.5 7-7"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 26C6 13 14 6 27 5c0 13-7 21-19 21z"/><path d="M6 26L19 13"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h16M8 28h16"/><path d="M10 4c0 7 6 8 6 12s-6 5-6 12"/><path d="M22 4c0 7-6 8-6 12s6 5 6 12"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="24" height="24" rx="4"/><path d="M16 10v12M10 16h12"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h18l-2 19H9z"/><path d="M8 14h16"/><path d="M18 8l3-5"/></svg>',
+  '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v13h14"/><path d="M9 17l-2 11M23 17l2 11"/><path d="M9 11h6"/></svg>'
 ];
 
 const QUESTIONS = [
-  {eyebrow:"QUESTION · 문항",
-   text:"아침에 눈을 뜨는 순간, 가장 가까운 모습은?",
+  {text:"아침에 눈을 뜬 직후, 가장 자주 느끼는 것은?",
    options:[
-     {text:"알람을 여러 개 맞춰놔도 몸을 일으키기가 버겁다", pts:{sleep:3}},
-     {text:"몸이 뻐근하고 어제와 달리 개운하지 않다", pts:{horm:1, back:2}},
-     {text:"밤새 화장실 때문에 여러 번 깼다", pts:{glu:3}},
-     {text:"특별히 불편한 곳 없이 가뿐하다", pts:{prev:2}},
+     {text:"알람을 여러 개 맞춰도 일어나기 힘들고, 자도 자도 피곤하다", pts:{sleep:3}},
+     {text:"일어날 때 허리가 뻣뻣하고 몸이 굳은 느낌이다", pts:{back:3}},
+     {text:"예전보다 기운이 달리고 회복도 느려졌다", pts:{aging:3}},
+     {text:"특별히 불편한 곳 없이 개운하다", pts:{}},
    ]},
-  {eyebrow:"QUESTION · 문항",
-   text:"식사 후 몸 상태에 대해 가장 가까운 것은?",
+  {text:"식사와 식습관에서 가장 가까운 것은?",
    options:[
-     {text:"식후 나른함이 심하고 믹스커피 같은 단 음료를 자주 찾는다", pts:{glu:3}},
-     {text:"배가 고프지 않은데도 밤이 되면 자연스럽게 배달 앱을 켠다", pts:{meta:3}},
-     {text:"다이어트를 여러 번 시도했지만, 늘 음식 생각이 머릿속을 떠나지 않아 요요가 반복된다", pts:{diet:3}},
-     {text:"딱히 식후 불편함은 없다", pts:{prev:1, sleep:1}},
+     {text:"밥만 먹으면 유독 졸리고, 식은땀이 나기도 한다", pts:{glu:3}},
+     {text:"초가공식품·간식을 끊기 어렵고, 먹어도 허전하다", pts:{meta:3}},
+     {text:"햄·소시지·튀김 같은 가공식품이나 고기 위주 식사가 잦다", pts:{cancer:3}},
+     {text:"식사에서 딱히 걱정되는 점은 없다", pts:{}},
    ]},
-  {eyebrow:"QUESTION · 문항",
-   text:"체중·다이어트 관련 경험 중 가장 가까운 것은?",
+  {text:"체중에 대해 가장 가까운 것은?",
    options:[
-     {text:"식사량은 줄였는데 근육이 먼저 빠지는 느낌이다", pts:{musc:2, diet:1}},
      {text:"위고비 같은 체중 감량 주사제를 알아보거나 사용해본 적 있다", pts:{diet:3}},
-     {text:"운동량을 늘려도 체중이 잘 줄지 않는다", pts:{meta:2, horm:1}},
-     {text:"체중 변화에 크게 신경 쓰지 않는다", pts:{prev:2}},
+     {text:"먹는 양은 그대로인데, 몇 해 새 살이 잘 찌는 체질로 바뀐 것 같다", pts:{meta:3}},
+     {text:"살을 빼는 동안 근육부터 빠지는 느낌이다", pts:{musc:3}},
+     {text:"운동하고 식단을 지켜도 체중이 잘 빠지지 않는다", pts:{horm:3}},
+     {text:"체중에는 크게 신경 쓰지 않는다", pts:{}},
    ]},
-  {eyebrow:"QUESTION · 문항",
-   text:"몸을 움직일 때 가장 신경 쓰이는 신호는?",
+  {text:"몸을 움직일 때 가장 신경 쓰이는 신호는?",
    options:[
-     {text:"계단 몇 개만 올라도 다리에 힘이 없고 숨이 찬다", pts:{musc:3}},
-     {text:"평소와 다르게 순간 휘청하거나 균형을 잃을 때가 있다", pts:{emer:3}},
-     {text:"오래 앉아 있다 일어나면 허리가 뻣뻣하다", pts:{back:3}},
-     {text:"딱히 불편한 곳은 없다", pts:{sleep:1, prev:1}},
+     {text:"계단 몇 개만 올라도 다리에 힘이 풀리고 숨이 찬다", pts:{musc:3}},
+     {text:"걸음이 느려지고, 큰 병은 없는데 점점 약해지는 느낌이다", pts:{aging:3}},
+     {text:"순간 어지럽거나 휘청해서 넘어질 뻔한 적이 있다", pts:{emer:3}},
+     {text:"딱히 불편한 곳은 없다", pts:{}},
    ]},
-  {eyebrow:"QUESTION · 문항",
-   text:"요즘 감정이나 컨디션 기복에 대해 가장 가까운 것은?",
+  {text:"운동과 활동량에 대해 가장 가까운 것은?",
    options:[
-     {text:"이유 없이 예민해지고 얼굴이 화끈거릴 때가 있다", pts:{horm:3}},
-     {text:"잠을 설쳐서 낮엔 멍하고 자신감이 떨어진다", pts:{sleep:3}},
-     {text:"별로 느끼지 못한다", pts:{prev:1}},
-     {text:"갑자기 팔다리에 힘이 빠지거나 말이 어눌해질 때가 있어 걱정된다", pts:{emer:3}},
+     {text:"운동을 시작하고 싶은데 집·공원·헬스장 중 무엇부터 해야 할지 모르겠다", pts:{musc:3}},
+     {text:"식사 후 바로 앉거나 눕고, 걷는 일이 거의 없다", pts:{glu:3}},
+     {text:"영상을 따라 운동하다가 허리나 무릎이 오히려 아파졌다", pts:{back:3}},
+     {text:"체중 감량 중인데 운동과 식사를 어떻게 병행해야 할지 모르겠다", pts:{diet:3}},
+     {text:"꾸준히 운동하는 편이다", pts:{}},
    ]},
-  {eyebrow:"QUESTION · 문항",
-   text:"밤 시간, 당신의 몸은 어떤 상태인가요?",
+  {text:"허리·관절·균형과 관련해 가장 가까운 것은?",
    options:[
-     {text:"잠들기까지 오래 걸리고 스마트폰을 손에서 놓지 못한다", pts:{sleep:3}},
-     {text:"자려고 누우면 유독 가렵거나 두드러기가 올라온다", pts:{skin:3}},
-     {text:"늦은 시간 야식 충동을 참기 어렵다", pts:{diet:2, meta:1}},
-     {text:"자기 전 스트레칭할 여유조차 없다", pts:{musc:2, back:1}},
+     {text:"오래 앉아 있으면 허리가 아픈데, 병원에서는 이상이 없다고 한다", pts:{back:3}},
+     {text:"코어와 하체 힘이 약해 오래 서 있거나 물건 들기가 힘들다", pts:{musc:3}},
+     {text:"무릎·고관절이 뻣뻣해지고 관절이 예전 같지 않다", pts:{aging:3}},
+     {text:"본인이나 가족이 넘어져서 다친 적이 있다", pts:{emer:3}},
+     {text:"해당되는 것이 없다", pts:{}},
    ]},
-  {eyebrow:"QUESTION · 문항",
-   text:"건강검진이나 평소 관리 습관 중 가장 가까운 것은?",
+  {text:"밤 시간, 몸은 어떤 상태인가요?",
    options:[
-     {text:"콜레스테롤·혈당 수치가 걱정된 적이 있다", pts:{glu:2, prev:2}},
-     {text:"몇 년째 건강검진을 미루고 있다", pts:{prev:3}},
-     {text:"낙상이나 심정지 같은 응급상황 대처법을 전혀 모른다", pts:{emer:3}},
-     {text:"딱히 걱정되는 부분은 없다", pts:{back:1, sleep:1}},
+     {text:"잠들기까지 오래 걸리고 자꾸 뒤척인다", pts:{sleep:3}},
+     {text:"누우면 유독 가렵거나 두드러기가 올라온다", pts:{skin:3}},
+     {text:"밤마다 야식 충동을 참기 어렵다", pts:{diet:3}},
+     {text:"야근·교대 근무 등으로 생활 리듬이 늘 흐트러져 있다", pts:{cancer:3}},
+     {text:"잘 자는 편이다", pts:{}},
    ]},
-  {eyebrow:"QUESTION · 문항",
-   text:"피부 상태에 대해 가장 가까운 것은?",
+  {text:"스트레스를 받으면 몸이 가장 먼저 보내는 신호는?",
    options:[
-     {text:"저녁만 되면 유독 가렵거나 두드러기가 올라온다", pts:{skin:3}},
-     {text:"스트레스를 받으면 피부부터 트러블로 반응한다", pts:{skin:2, horm:1}},
-     {text:"머리카락이 가늘어지고 피부가 푸석해진 느낌이다", pts:{horm:1, prev:1}},
-     {text:"특별한 피부 트러블은 없는 편이다", pts:{prev:2}},
+     {text:"폭식하거나 야식을 참지 못한다", pts:{meta:3}},
+     {text:"피부에 두드러기나 트러블이 올라온다", pts:{skin:3}},
+     {text:"의욕이 떨어지고 우울하거나 예민해진다", pts:{horm:3}},
+     {text:"잠이 안 오고, 자다가 자꾸 깬다", pts:{sleep:3}},
+     {text:"해당되는 것이 없다", pts:{}},
    ]},
-  {eyebrow:"QUESTION · 문항",
-   text:"허리·자세와 관련해 가장 가까운 것은?",
+  {text:"최근 몇 해 사이 몸에 달라진 점은?",
    options:[
-     {text:"짝다리를 짚거나 다리를 꼬는 습관이 있고, 앉았다 일어나면 허리가 아프다", pts:{back:3}},
-     {text:"물건 드는 것도 예전보다 버겁게 느껴진다", pts:{musc:3}},
-     {text:"허리보다는 피부나 컨디션이 더 신경 쓰인다", pts:{skin:1, horm:1}},
-     {text:"특별히 신경 쓰지 않는 편이다", pts:{prev:2}},
+     {text:"얼굴이 화끈거리고 식은땀·불면·예민함이 찾아온다", pts:{horm:3}},
+     {text:"배와 내장지방이 늘고, 혈압·혈당 수치도 함께 올랐다", pts:{meta:3}},
+     {text:"혈압이나 콜레스테롤 수치가 해마다 조금씩 오르고 있다", pts:{prev:3}},
+     {text:"가슴 두근거림, 어지럼, 숨참 같은 증상이 갑자기 찾아온 적이 있다", pts:{emer:3}},
+     {text:"해당되는 것이 없다", pts:{}},
    ]},
-  {eyebrow:"QUESTION · 문항",
-   text:"요즘 스트레스를 받으면 몸이 가장 먼저 보내는 신호는?",
+  {text:"피부와 모발 상태에 대해 가장 가까운 것은?",
    options:[
-     {text:"가슴이 두근거리거나 순간 어지럽고 식은땀이 난다", pts:{emer:3}},
-     {text:"폭식하거나 야식을 참지 못하고, 살이 잘 안 빠진다", pts:{meta:3}},
-     {text:"얼굴이나 몸에 두드러기·트러블이 올라온다", pts:{skin:3}},
-     {text:"무기력하고 피곤한데 잠도 잘 못 잔다", pts:{horm:2, sleep:1}},
+     {text:"이유 없이 가려움이나 두드러기가 몇 주째 반복된다", pts:{skin:3}},
+     {text:"샤워·추위·운동·옷 쓸림 뒤에 피부가 붓거나 올라온다", pts:{skin:3}},
+     {text:"머리카락이 가늘어지고 피부 탄력이 빠르게 떨어진다", pts:{horm:3}},
+     {text:"특별한 피부·모발 문제는 없다", pts:{}},
    ]},
+  {text:"검진과 건강 관리에서 가장 걱정되는 것은?",
+   options:[
+     {text:"공복혈당이나 당화혈색소가 경계라는 말을 들었다", pts:{glu:3}},
+     {text:"영양제를 여럿 먹는데, 건강 정보가 서로 달라 뭘 믿어야 할지 헷갈린다", pts:{prev:3}},
+     {text:"가족·지인의 암 소식 이후 불안한데, 검진은 계속 미루고 있다", pts:{cancer:3}},
+     {text:"해당되는 것이 없다", pts:{}},
+   ]},
+  {text:"면역과 만성 증상에 대해 가장 가까운 것은?",
+   options:[
+     {text:"만성적인 염증·피로가 있고, 장이 자주 불편하다", pts:{cancer:3}},
+     {text:"약이나 음식 뒤에 눈꺼풀·입술이 붓거나 두드러기가 올라온 적이 있다", pts:{skin:3}},
+     {text:"치매·뇌졸중·심근경색·당뇨 가족력이 있어 예방이 걱정된다", pts:{prev:3}},
+     {text:"해당되는 것이 없다", pts:{}},
+   ]},
+  {text:"나이 듦(본인 또는 부모님)에 대해 가장 가까운 생각은?",
+   options:[
+     {text:"부모님을 보며 내 노후가 어떨지 막막하다", pts:{aging:3}},
+     {text:"복용하는 약과 건강기능식품이 점점 늘어난다", pts:{aging:3}},
+     {text:"배우자·자녀·친구와의 관계, 돌봄과 노후 생활비가 걱정된다", pts:{aging:3}},
+     {text:"해당되는 것이 없다", pts:{}},
+   ]},
+  {text:"가족(특히 고령의 부모님)의 건강에 대해 가장 가까운 것은?",
+   options:[
+     {text:"기운이 없고 걸음이 달라지셨는데, 나이 탓으로만 넘겼다", pts:{emer:3}},
+     {text:"뇌졸중이나 심근경색이 의심될 때 어떻게 해야 할지 모른다", pts:{emer:3}},
+     {text:"가족이 갑자기 쓰러졌을 때 응급처치와 병원 판단이 막막하다", pts:{emer:3}},
+     {text:"부모님 돌봄과 간병을 가족이 감당할 수 있을지 걱정된다", pts:{aging:2,emer:1}},
+     {text:"해당되는 것이 없다", pts:{}},
+   ]},
+  {text:"평소 마시는 음료·간식과 먹는 것에 대한 마음은?",
+   options:[
+     {text:"믹스커피·주스·단 음료를 자주 마시고, 식후에 단것이 당긴다", pts:{glu:3}},
+     {text:"과일·과일주스는 건강식이라 생각해서 마음껏 먹는다", pts:{glu:3}},
+     {text:"체중 때문에 먹을 때마다 죄책감이 들고, 요요가 반복된다", pts:{diet:3}},
+     {text:"다이어트 약이나 식단을 중단했더니 체중이 다시 늘었다", pts:{diet:3}},
+     {text:"해당되는 것이 없다", pts:{}},
+   ]},
+  {text:"하루 생활 습관 중 가장 마음에 걸리는 것은?",
+   options:[
+     {text:"하루 대부분 앉아 있고, 짝다리를 짚거나 다리를 꼬는 습관이 있다", pts:{back:3}},
+     {text:"잠이 안 오면 술이나 커피에 기대는 편이다", pts:{sleep:3}},
+     {text:"건강을 챙길 시간이 없어 검진과 관리를 계속 미룬다", pts:{prev:3}},
+     {text:"해당되는 것이 없다", pts:{}},
+   ]}
 ];
 
 /* ---------------- 상태 ---------------- */
@@ -589,9 +643,10 @@ Object.keys(CATS).forEach(k=>scores[k]=0);
 /* 카테고리별 이론상 최대 점수(정규화 분모) 계산 */
 const MAXSCORE = {};
 Object.keys(CATS).forEach(k=>MAXSCORE[k]=0);
+/* 한 문항에서는 선택지 하나만 고를 수 있으므로, 문항별 최고 점수의 합이 실제 도달 가능한 최대 점수 */
 QUESTIONS.forEach(q=>{
-  q.options.forEach(o=>{
-    Object.entries(o.pts).forEach(([k,v])=>{ MAXSCORE[k]+=v; });
+  Object.keys(CATS).forEach(k=>{
+    MAXSCORE[k] += Math.max(0, ...q.options.map(o=>o.pts[k]||0));
   });
 });
 
@@ -677,14 +732,50 @@ function restartQuiz(){ startQuiz(); }
 let lastTop = [];
 
 function rankCategories(){
-  return Object.entries(scores)
-    .map(([key,score])=>({key, score, pct: Math.min(99, Math.round((score / (MAXSCORE[key]||1)) * 100))}))
-    .sort((a,b)=> b.score - a.score);
+  /* 동점 규칙: 매칭률 → 원점수 → 응답 조합으로 정해지는 고정 순서
+     (같은 응답이면 항상 같은 결과이고, 특정 처방이 일관되게 유리하지 않도록 응답 값을 섞어 정한다) */
+  const keys = Object.keys(CATS);
+  let seed = 7;
+  QUESTIONS.forEach((q,qi)=>{ seed = (seed * 31 + ((answers[qi]===undefined?0:answers[qi]) + 1) * (qi + 3)) % 100003; });
+  const ranked = keys
+    .map((key,order)=>({key, order, score:scores[key],
+      tie: (seed * (order + 3) + order * 17) % 101,
+      pct: Math.min(99, Math.round((scores[key] / (MAXSCORE[key]||1)) * 100))}))
+    .sort((a,b)=> (b.pct - a.pct) || (b.score - a.score) || (a.tie - b.tie) || (a.order - b.order));
+  /* 모든 문항을 '해당 없음'으로 답해 점수가 전부 0이면 기본 처방(질병예방)을 먼저 보여준다 */
+  if(ranked[0].score === 0){
+    const i = ranked.findIndex(r=>r.key==='prev');
+    if(i > 0) ranked.unshift(ranked.splice(i,1)[0]);
+  }
+  return ranked;
+}
+
+
+function fillBook(sfx, cat){
+  document.getElementById('book-cta-round'+sfx).textContent = cat.isUpcoming
+    ? `공개 예정 신규 회차 · ${cat.expert}`
+    : `${cat.round}회차 · ${cat.expert}`;
+  document.getElementById('book-cta-title'+sfx).textContent = cat.bookTitle;
+  const coverEl = document.getElementById('book-cover'+sfx);
+  coverEl.src = cat.bookCover;
+  coverEl.alt = cat.bookTitle;
+  coverEl.style.borderColor = cat.color;
+  const linkEl = document.getElementById('book-cta-link'+sfx);
+  linkEl.href = cat.bookLink;
+  linkEl.style.background = cat.color;
+  const interviewEl = document.getElementById('interview-link'+sfx);
+  if(cat.interviewLink){
+    interviewEl.href = cat.interviewLink;
+    interviewEl.textContent = `${cat.expert} 서면인터뷰 보기 →`;
+    interviewEl.classList.remove('hidden');
+  } else {
+    interviewEl.classList.add('hidden');
+  }
 }
 
 function renderResult(){
   const ranked = rankCategories();
-  lastTop = ranked.slice(0,3);
+  lastTop = ranked.slice(0,3).filter((x,i)=> i===0 || x.score>0);  // 점수가 0인 처방은 순위에 올리지 않음
 
   const now = new Date();
   const dateStr = `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')}`;
@@ -694,10 +785,18 @@ function renderResult(){
   const topCat = CATS[top.key];
   document.getElementById('dx-name').textContent = topCat.name;
   document.getElementById('dx-name').style.color = topCat.color;
-  const matchEl = document.getElementById('dx-match');
-  matchEl.textContent = `매칭률 ${Math.max(top.pct, 62)}%`;
-  matchEl.style.background = topCat.color;
-  document.getElementById('dx-reason').textContent = topCat.reason;
+  document.getElementById('dx-reason').innerHTML = topCat.reason;
+
+  const noteEl = document.getElementById('dx-note');
+  if(top.score === 0){
+    noteEl.textContent = '뚜렷한 신호가 확인되지 않아 기본 예방 처방을 안내해 드려요.';
+    noteEl.classList.remove('hidden');
+  } else if(top.pct < 50){
+    noteEl.textContent = '여러 항목이 비슷하게 나왔어요. 아래 2·3순위 처방도 함께 살펴보세요.';
+    noteEl.classList.remove('hidden');
+  } else {
+    noteEl.classList.add('hidden');
+  }
 
   const list = document.getElementById('rx-ranklist');
   list.innerHTML = '';
@@ -708,33 +807,14 @@ function renderResult(){
     row.innerHTML = `
       <div class="rank-num">${i+1}</div>
       <div class="rank-body">
-        <div class="rank-top"><span>${cat.name}</span><span style="color:${cat.color}">${Math.max(item.pct, 40 - i*10)}%</span></div>
-        <div class="rank-sub">${cat.isUpcoming ? '공개 예정 신규 회차' : '관련 처방전 ' + cat.round + '회차'} · ${cat.expert}</div>
+        <div class="rank-top"><span style="color:${cat.color}">${cat.name}</span></div>
+        <div class="rank-sub">${cat.eventTitle ? cat.eventTitle : (cat.isUpcoming ? '공개 예정 신규 회차' : '관련 처방전 ' + cat.round + '회차') + ' · ' + cat.expert}</div>
       </div>`;
     list.appendChild(row);
   });
 
-  // 1순위 처방 도서 랜딩 영역
-  document.getElementById('book-cta-round').textContent = topCat.isUpcoming
-    ? `공개 예정 신규 회차 · ${topCat.expert}`
-    : `${topCat.round}회차 · ${topCat.expert}`;
-  document.getElementById('book-cta-title').textContent = topCat.bookTitle;
-  const coverEl = document.getElementById('book-cover');
-  coverEl.src = topCat.bookCover;
-  coverEl.alt = topCat.bookTitle;
-  coverEl.style.borderColor = topCat.color;
-  const linkEl = document.getElementById('book-cta-link');
-  linkEl.href = topCat.bookLink;
-  linkEl.style.background = topCat.color;
-
-  const interviewEl = document.getElementById('interview-link');
-  if(topCat.interviewLink){
-    interviewEl.href = topCat.interviewLink;
-    interviewEl.textContent = `${topCat.expert} 서면인터뷰 보기 →`;
-    interviewEl.classList.remove('hidden');
-  } else {
-    interviewEl.classList.add('hidden');
-  }
+  // 처방 도서 영역: 1순위 도서만 처방
+  fillBook('', topCat);
 }
 
 </script>
