@@ -285,23 +285,23 @@
   }
   .book-cta-label{
     font-family:'Noto Sans KR',sans-serif;font-size:10.5px;
-    letter-spacing:.1em;color:var(--rx-red);margin-bottom:12px;
+    letter-spacing:.1em;color:var(--rx-red);margin-bottom:16px;text-align:center;
   }
-  .book-cta-body{display:flex;gap:14px;align-items:stretch;}
+  .book-cta-body{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;}
   .book-cover{
-    width:76px;height:108px;object-fit:cover;flex-shrink:0;
+    width:168px;height:auto;aspect-ratio:2/3;object-fit:cover;flex-shrink:0;
     background:#D6E2F0;border:2px solid var(--ink);
-    box-shadow:3px 3px 0 rgba(27,58,110,0.18);
+    box-shadow:6px 6px 0 rgba(27,58,110,0.18);
   }
-  .book-cta-info{display:flex;flex-direction:column;justify-content:space-between;flex:1;min-width:0;}
-  .book-cta-round{font-family:'Noto Sans KR',sans-serif;font-size:11px;color:var(--ink-soft);}
+  .book-cta-info{display:flex;flex-direction:column;align-items:center;width:100%;min-width:0;}
+  .book-cta-round{font-family:'Noto Sans KR',sans-serif;font-size:12px;color:var(--ink-soft);}
   .book-cta-title{
-    font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:15.5px;
-    line-height:1.4;margin:4px 0 10px;
+    font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:18px;
+    line-height:1.45;margin:6px 0 16px;word-break:keep-all;
   }
   .book-cta-link{
-    display:inline-block;width:auto;text-align:center;
-    padding:10px 16px;font-size:13.5px;border-radius:3px;
+    display:block;width:100%;text-align:center;
+    padding:14px 16px;font-size:15px;border-radius:3px;text-decoration:none;
   }
 
   .interview-link{
