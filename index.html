@@ -10,7 +10,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>이달의 처방전 - 나에게 맞는 건강 처방 찾기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +48,8 @@
     display:flex;
     justify-content:center;
     -webkit-font-smoothing:antialiased;
+    word-break:keep-all;
+    overflow-wrap:break-word;
   }
 
   #app{
@@ -107,7 +109,7 @@
   .intake-label{
     display:inline-block;
     font-family:'Noto Sans KR',sans-serif;
-    font-size:11.5px;font-weight:700;letter-spacing:.04em;
+    font-size:13px;font-weight:700;letter-spacing:.04em;
     color:var(--ink);
     border:1px solid rgba(27,58,110,0.45);
     background:rgba(255,255,255,0.7);
@@ -120,7 +122,7 @@
     color:var(--ink);margin:0 0 10px;
   }
   .intro-meta{
-    font-size:12.5px;color:#2F5185;
+    font-size:13.5px;color:#2F5185;
     margin-bottom:22px;
   }
   .intro-icons{
@@ -145,14 +147,14 @@
     background:#fff;
     border-radius:4px;
     padding:16px 18px;
-    font-size:13px;line-height:1.8;
+    font-size:14px;line-height:1.8;
     color:var(--ink-soft);
     margin-bottom:8px;
     text-align:left;
   }
   .intro-chart b{color:var(--ink);}
   .intro-footnote{
-    font-size:11px;color:#2F5185;text-align:center;
+    font-size:12.5px;color:#2F5185;text-align:center;
     margin:14px 0 0;line-height:1.6;
   }
   .btn{
@@ -177,8 +179,8 @@
     margin-bottom:4px;
   }
   .chart-progress-label{
-    font-family:'Noto Sans KR',sans-serif;font-size:11.5px;
-    color:var(--ink-soft);letter-spacing:.08em;
+    font-family:'Noto Sans KR',sans-serif;font-size:13px;
+    color:var(--ink-soft);letter-spacing:.02em;
   }
   .tally{display:flex;gap:3px;}
   .tally i{
@@ -204,16 +206,17 @@
     border:1.5px solid var(--line);
     border-radius:3px;
     padding:15px 16px;
-    font-size:14.5px;line-height:1.55;color:var(--ink);
+    font-size:15.5px;line-height:1.55;color:var(--ink);
     cursor:pointer;
     transition:border-color .15s, background .15s;
   }
   .opt-btn:active{background:#D7E5F5;}
-  .opt-btn:focus-visible{outline:2.5px solid var(--rx-red);outline-offset:2px;}
+  .opt-btn:focus-visible, .btn:focus-visible, .q-back:focus-visible, .retry-link:focus-visible, .interview-link:focus-visible{outline:3px solid #1B3A6E;outline-offset:3px;box-shadow:0 0 0 6px rgba(217,174,88,0.55);}
+  .q-text:focus, #screen-result h2:focus{outline:none;}
 
   .q-back{
-    margin-top:auto;padding-top:18px;
-    font-size:13px;color:var(--ink-soft);
+    margin-top:auto;padding:12px 8px 12px 0;min-height:44px;
+    font-size:14.5px;color:var(--ink-soft);
     background:none;border:none;text-decoration:underline;
     cursor:pointer;align-self:flex-start;
   }
@@ -221,8 +224,8 @@
   /* ---------- 결과: 처방전 ---------- */
   #screen-result{gap:18px;}
   .result-lead{
-    font-family:'Noto Sans KR',sans-serif;font-size:11.5px;
-    color:var(--ink-soft);letter-spacing:.1em;text-align:center;
+    font-family:'Noto Sans KR',sans-serif;font-size:13px;
+    color:var(--ink-soft);letter-spacing:.02em;text-align:center;
     margin-top:6px;
   }
 
@@ -248,18 +251,18 @@
     font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:24px;
   }
   .rx-meta{
-    font-family:'Noto Sans KR',sans-serif;font-size:10.5px;color:var(--ink-soft);
+    font-family:'Noto Sans KR',sans-serif;font-size:12px;color:var(--ink-soft);
     text-align:right;line-height:1.6;
   }
 
   .dx-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-  .dx-name{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:24px;}
+  .dx-name{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:28px;line-height:1.25;word-break:keep-all;}
   .dx-match{
     font-family:'Noto Sans KR',sans-serif;font-weight:600;font-size:12px;
     padding:4px 10px;border-radius:20px;color:#fff;white-space:nowrap;
   }
-  .dx-reason{font-size:13.5px;line-height:1.7;color:var(--ink-soft);margin-bottom:18px;}
-  .dx-note{font-size:12.5px;line-height:1.6;color:var(--ink-soft);background:var(--paper-alt);border-left:3px solid var(--line);padding:9px 12px;margin:-6px 0 18px;}
+  .dx-reason{font-size:14.5px;line-height:1.7;color:var(--ink-soft);margin-bottom:18px;}
+  .dx-note{font-size:13px;line-height:1.6;color:var(--ink-soft);background:var(--paper-alt);border-left:3px solid var(--line);padding:9px 12px;margin:-6px 0 18px;}
   .dx-note.hidden{display:none;}
   .dx-reason u{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;color:var(--ink);font-weight:500;}
 
@@ -268,11 +271,11 @@
   .rank-row:last-child{border-bottom:none;}
   .rank-num{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:15px;color:var(--ink-soft);width:20px;}
   .rank-body{flex:1;}
-  .rank-top{display:flex;justify-content:space-between;font-size:13.5px;font-weight:700;}
-  .rank-sub{font-size:11.5px;color:var(--ink-soft);margin-top:2px;}
+  .rank-top{display:flex;justify-content:space-between;font-size:15px;font-weight:700;}
+  .rank-sub{font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin-top:2px;}
 
   .rx-footnote{
-    text-align:center;font-size:10.5px;color:var(--ink-soft);
+    text-align:center;font-size:12px;color:var(--ink-soft);
     margin-top:16px;letter-spacing:.02em;
   }
 
@@ -284,8 +287,8 @@
     padding:16px;
   }
   .book-cta-label{
-    font-family:'Noto Sans KR',sans-serif;font-size:10.5px;
-    letter-spacing:.1em;color:var(--rx-red);margin-bottom:16px;text-align:center;
+    font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;
+    letter-spacing:.02em;color:#9C2F2F;margin-bottom:16px;text-align:center;
   }
   .book-cta-body{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;}
   .book-cover{
@@ -294,7 +297,7 @@
     box-shadow:6px 6px 0 rgba(27,58,110,0.18);
   }
   .book-cta-info{display:flex;flex-direction:column;align-items:center;width:100%;min-width:0;}
-  .book-cta-round{font-family:'Noto Sans KR',sans-serif;font-size:12px;color:var(--ink-soft);}
+  .book-cta-round{font-family:'Noto Sans KR',sans-serif;font-size:13px;color:var(--ink-soft);}
   .book-cta-title{
     font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:18px;
     line-height:1.45;margin:6px 0 16px;word-break:keep-all;
@@ -322,7 +325,7 @@
   .interview-link.hidden{display:none;}
 
   .retry-link{
-    text-align:center;margin-top:22px;font-size:12.5px;
+    text-align:center;margin-top:14px;font-size:14.5px;min-height:44px;padding:10px 16px;
     color:var(--ink-soft);text-decoration:underline;cursor:pointer;background:none;border:none;
   }
 </style>
@@ -337,33 +340,33 @@
       <div class="intake-label">자가테스트</div>
       <h1 class="intro-title">당신에게 필요한<br>건강 처방은?</h1>
       <div class="intro-meta">총 16문항 · 예상 소요시간 2분</div>
-      <div class="intro-icons" id="intro-icons"></div>
+      <div class="intro-icons" id="intro-icons" aria-hidden="true"></div>
 
       <div class="intro-chart">
-        <b>문진 안내</b><br>
-        · 본 테스트는 이달의 처방전 기획전 컨텐츠 기반으로 제작되었습니다.<br>
-        · 이달의 처방전 도서들 중 나에게 맞는 처방을 순위로 알려드립니다.<br>
-        · 결과에 맞는 처방과 도서를 추천해드립니다.
+        <b>테스트 안내</b><br>
+        · 이달의 처방전 기획전을 바탕으로 만든 자가테스트입니다.<br>
+        · 16개 문항에 답하면 나에게 맞는 처방을 순위로 알려드립니다.<br>
+        · 1순위 처방에 맞는 도서와 전문가 서면인터뷰도 함께 안내합니다.
       </div>
       <p class="intro-footnote">본 결과는 참고용 콘텐츠이며 의학적 진단을 대신하지 않습니다.</p>
     </div>
 
-    <button class="btn btn-gold" onclick="startQuiz()">문진 시작하기</button>
+    <button class="btn btn-gold" onclick="startQuiz()">테스트 시작하기</button>
   </section>
 
-  <!-- ============ 화면 2: 문진 ============ -->
+  <!-- ============ 화면 2: 테스트 ============ -->
   <section id="screen-quiz" class="screen">
     <div class="clinic-mark"><span class="mark-text">당신에게 필요한 건강 처방</span></div>
 
     <div class="chart-progress">
-      <span class="chart-progress-label" id="progress-label">QUESTION · 문항 1 / 16</span>
-      <div class="tally" id="tally"></div>
+      <span class="chart-progress-label" id="progress-label" aria-live="polite">문항 1 / 16</span>
+      <div class="tally" id="tally" aria-hidden="true"></div>
     </div>
 
     <div>
-      <div class="q-icon" id="q-icon"></div>
-      <p class="q-text" id="q-text"></p>
-      <div class="options" id="q-options"></div>
+      <div class="q-icon" id="q-icon" aria-hidden="true"></div>
+      <h2 class="q-text" id="q-text" tabindex="-1"></h2>
+      <div class="options" id="q-options" role="group" aria-labelledby="q-text"></div>
     </div>
 
     <button class="q-back" id="btn-back" onclick="goBack()" style="visibility:hidden;">← 이전 문항으로</button>
@@ -381,7 +384,7 @@
       </div>
 
       <div class="dx-row">
-        <div class="dx-name" id="dx-name"></div>
+        <h2 class="dx-name" id="dx-name" tabindex="-1" style="margin:0;"></h2>
       </div>
       <p class="dx-reason" id="dx-reason"></p>
       <p class="dx-note hidden" id="dx-note"></p>
@@ -404,7 +407,7 @@
       <a class="interview-link" id="interview-link" href="#" target="_blank" rel="noopener">이 처방을 내린 전문가 서면인터뷰 보기 →</a>
     </div>
 
-    <button class="retry-link" onclick="restartQuiz()">문진 다시 하기</button>
+    <button class="retry-link" onclick="restartQuiz()">테스트 다시 하기</button>
   </section>
 
 </div>
@@ -430,7 +433,7 @@ const CATS = {
           bookTitle:"성공적인 다이어트를 위한 위고비(GLP-1) 사용설명서", bookCover:"https://image.yes24.com/goods/153039075/XL",
           bookLink:"https://www.yes24.com/product/goods/153039075",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21703000"},
-  musc:  {name:"근력운동",     round:4,  expert:"이금호 트레이너", color:"#4F7942",
+  musc:  {name:"근력운동",     round:4,  expert:"이금호 시니어 운동 전문가", color:"#4F7942",
           eventTitle:"이달의 처방전 4 - 달라진 몸에는 달라진 운동이 필요하다",
           reason:"근력 저하로 인한 체력 저하 신호가 뚜렷합니다. <u>근력 회복이 시급한 처방</u>으로 진단됩니다.",
           bookTitle:"100세 근력", bookCover:"https://image.yes24.com/goods/163500163/XL",
@@ -454,7 +457,7 @@ const CATS = {
           bookTitle:"살찌지 않는 몸", bookCover:"https://image.yes24.com/goods/181119788/XL",
           bookLink:"https://www.yes24.com/product/goods/181119788",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22041902"},
-  back:  {name:"허리·자세",    round:8,  expert:"이대영 교수", color:"#3E6B8A",
+  back:  {name:"허리·자세",    round:8,  expert:"이대영 원장", color:"#3E6B8A",
           eventTitle:"이달의 처방전 8 - 통증 완화를 넘어 '잘 사는 몸'을 위한 척추 재활의 정석",
           reason:"허리와 자세 관련 불편함이 반복적으로 나타났습니다. <u>자세 교정 처방</u>을 권합니다.",
           bookTitle:"100년 쓰는 완벽 허리", bookCover:"https://image.yes24.com/goods/182493078/XL",
@@ -465,8 +468,8 @@ const CATS = {
           reason:"정기 검진과 예방 관리가 미뤄지고 있는 신호가 확인되었습니다. <u>예방 관리 처방</u>이 우선입니다.",
           bookTitle:"질병 예방 세대", bookCover:"https://image.yes24.com/goods/186939270/XL",
           bookLink:"https://www.yes24.com/product/goods/186939270",
-          interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22296882"},
-  sleep: {name:"수면",         round:10, expert:"이준용 의사", color:"#4A4E69",
+          interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22146151"},
+  sleep: {name:"수면",         round:10, expert:"이준용 정신건강의학과 전문의", color:"#4A4E69",
           eventTitle:"이달의 처방전 10 - 무너진 몸과 마음을 되돌리는 수면의 과학",
           reason:"수면의 질 저하가 전반적인 컨디션에 영향을 주고 있는 것으로 보입니다. <u>숙면 처방</u>이 필요합니다.",
           bookTitle:"자도 자도 피곤한 당신을 위한 수면 처방", bookCover:"https://image.yes24.com/goods/193984774/XL",
@@ -515,35 +518,35 @@ const QUESTIONS = [
   {text:"아침에 눈을 뜬 직후, 가장 자주 느끼는 것은?",
    options:[
      {text:"알람을 여러 개 맞춰도 일어나기 힘들고, 자도 자도 피곤하다", pts:{sleep:3}},
-     {text:"일어날 때 허리가 뻣뻣하고 몸이 굳은 느낌이다", pts:{back:3}},
-     {text:"예전보다 기운이 달리고 회복도 느려졌다", pts:{aging:3}},
+     {text:"이유 없이 쉽게 피로하고 감정 기복이 잦아졌다", pts:{horm:3}},
+     {text:"감기나 작은 일에도 회복이 더디고, 예전보다 기운이 달린다", pts:{aging:3}},
      {text:"특별히 불편한 곳 없이 개운하다", pts:{}},
    ]},
   {text:"식사와 식습관에서 가장 가까운 것은?",
    options:[
      {text:"밥만 먹으면 유독 졸리고, 식은땀이 나기도 한다", pts:{glu:3}},
-     {text:"초가공식품·간식을 끊기 어렵고, 먹어도 허전하다", pts:{meta:3}},
      {text:"햄·소시지·튀김 같은 가공식품이나 고기 위주 식사가 잦다", pts:{cancer:3}},
+     {text:"하루 종일 음식 생각이 머릿속을 떠나지 않는다", pts:{diet:3}},
      {text:"식사에서 딱히 걱정되는 점은 없다", pts:{}},
    ]},
   {text:"체중에 대해 가장 가까운 것은?",
    options:[
-     {text:"위고비 같은 체중 감량 주사제를 알아보거나 사용해본 적 있다", pts:{diet:3}},
-     {text:"먹는 양은 그대로인데, 몇 해 새 살이 잘 찌는 체질로 바뀐 것 같다", pts:{meta:3}},
-     {text:"살을 빼는 동안 근육부터 빠지는 느낌이다", pts:{musc:3}},
-     {text:"운동하고 식단을 지켜도 체중이 잘 빠지지 않는다", pts:{horm:3}},
+     {text:"위고비 같은 체중 감량 주사제를 쓰고 있거나, 부작용이 걱정돼 망설이고 있다", pts:{diet:3}},
+     {text:"적게 먹는데도 살이 쉽게 찌고, 다이어트를 할수록 더 찌는 것 같다", pts:{meta:3}},
+     {text:"살을 빼는 동안 근육부터 빠지는 느낌이다", pts:{diet:3}},
      {text:"체중에는 크게 신경 쓰지 않는다", pts:{}},
    ]},
   {text:"몸을 움직일 때 가장 신경 쓰이는 신호는?",
    options:[
-     {text:"계단 몇 개만 올라도 다리에 힘이 풀리고 숨이 찬다", pts:{musc:3}},
+     {text:"다리 힘이 약해져 계단이나 오르막이 힘들다", pts:{musc:3}},
      {text:"걸음이 느려지고, 큰 병은 없는데 점점 약해지는 느낌이다", pts:{aging:3}},
      {text:"순간 어지럽거나 휘청해서 넘어질 뻔한 적이 있다", pts:{emer:3}},
+     {text:"허리 통증이 반복돼서 몸을 움직이기가 조심스럽다", pts:{back:3}},
      {text:"딱히 불편한 곳은 없다", pts:{}},
    ]},
   {text:"운동과 활동량에 대해 가장 가까운 것은?",
    options:[
-     {text:"운동을 시작하고 싶은데 집·공원·헬스장 중 무엇부터 해야 할지 모르겠다", pts:{musc:3}},
+     {text:"통증이나 체력이 걱정돼, 운동을 어디서부터 시작해야 할지 모르겠다", pts:{musc:3}},
      {text:"식사 후 바로 앉거나 눕고, 걷는 일이 거의 없다", pts:{glu:3}},
      {text:"영상을 따라 운동하다가 허리나 무릎이 오히려 아파졌다", pts:{back:3}},
      {text:"체중 감량 중인데 운동과 식사를 어떻게 병행해야 할지 모르겠다", pts:{diet:3}},
@@ -552,8 +555,7 @@ const QUESTIONS = [
   {text:"허리·관절·균형과 관련해 가장 가까운 것은?",
    options:[
      {text:"오래 앉아 있으면 허리가 아픈데, 병원에서는 이상이 없다고 한다", pts:{back:3}},
-     {text:"코어와 하체 힘이 약해 오래 서 있거나 물건 들기가 힘들다", pts:{musc:3}},
-     {text:"무릎·고관절이 뻣뻣해지고 관절이 예전 같지 않다", pts:{aging:3}},
+     {text:"관절이 뻣뻣하고, 균형 잡기나 앉았다 일어서기가 예전 같지 않다", pts:{musc:3}},
      {text:"본인이나 가족이 넘어져서 다친 적이 있다", pts:{emer:3}},
      {text:"해당되는 것이 없다", pts:{}},
    ]},
@@ -561,75 +563,75 @@ const QUESTIONS = [
    options:[
      {text:"잠들기까지 오래 걸리고 자꾸 뒤척인다", pts:{sleep:3}},
      {text:"누우면 유독 가렵거나 두드러기가 올라온다", pts:{skin:3}},
-     {text:"밤마다 야식 충동을 참기 어렵다", pts:{diet:3}},
-     {text:"야근·교대 근무 등으로 생활 리듬이 늘 흐트러져 있다", pts:{cancer:3}},
+     {text:"코를 심하게 골거나, 자는 중에 숨이 멈춘다는 말을 들었다", pts:{sleep:3}},
+     {text:"늦게 먹고 늦게 자는 생활이 반복된다", pts:{cancer:3}},
      {text:"잘 자는 편이다", pts:{}},
    ]},
   {text:"스트레스를 받으면 몸이 가장 먼저 보내는 신호는?",
    options:[
      {text:"폭식하거나 야식을 참지 못한다", pts:{meta:3}},
      {text:"피부에 두드러기나 트러블이 올라온다", pts:{skin:3}},
-     {text:"의욕이 떨어지고 우울하거나 예민해진다", pts:{horm:3}},
      {text:"잠이 안 오고, 자다가 자꾸 깬다", pts:{sleep:3}},
      {text:"해당되는 것이 없다", pts:{}},
    ]},
   {text:"최근 몇 해 사이 몸에 달라진 점은?",
    options:[
-     {text:"얼굴이 화끈거리고 식은땀·불면·예민함이 찾아온다", pts:{horm:3}},
+     {text:"얼굴이 화끈거리고 식은땀·불면이 찾아온다", pts:{horm:3}},
      {text:"배와 내장지방이 늘고, 혈압·혈당 수치도 함께 올랐다", pts:{meta:3}},
      {text:"혈압이나 콜레스테롤 수치가 해마다 조금씩 오르고 있다", pts:{prev:3}},
-     {text:"가슴 두근거림, 어지럼, 숨참 같은 증상이 갑자기 찾아온 적이 있다", pts:{emer:3}},
+     {text:"가슴이 답답하거나 어지러운 증상이 새로 생겼는데, 지켜만 보고 있다", pts:{emer:3}},
      {text:"해당되는 것이 없다", pts:{}},
    ]},
-  {text:"피부와 모발 상태에 대해 가장 가까운 것은?",
+  {text:"피부 상태에 대해 가장 가까운 것은?",
    options:[
      {text:"이유 없이 가려움이나 두드러기가 몇 주째 반복된다", pts:{skin:3}},
-     {text:"샤워·추위·운동·옷 쓸림 뒤에 피부가 붓거나 올라온다", pts:{skin:3}},
      {text:"머리카락이 가늘어지고 피부 탄력이 빠르게 떨어진다", pts:{horm:3}},
-     {text:"특별한 피부·모발 문제는 없다", pts:{}},
+     {text:"항히스타민제를 먹어도 가라앉지 않거나, 음식을 이것저것 끊어 봐도 그대로다", pts:{skin:3}},
+     {text:"특별한 피부 문제는 없다", pts:{}},
    ]},
   {text:"검진과 건강 관리에서 가장 걱정되는 것은?",
    options:[
      {text:"공복혈당이나 당화혈색소가 경계라는 말을 들었다", pts:{glu:3}},
      {text:"영양제를 여럿 먹는데, 건강 정보가 서로 달라 뭘 믿어야 할지 헷갈린다", pts:{prev:3}},
-     {text:"가족·지인의 암 소식 이후 불안한데, 검진은 계속 미루고 있다", pts:{cancer:3}},
+     {text:"가족력 때문에 암이 걱정되는데, 무엇부터 관리해야 할지 막막하다", pts:{cancer:3}},
      {text:"해당되는 것이 없다", pts:{}},
    ]},
   {text:"면역과 만성 증상에 대해 가장 가까운 것은?",
    options:[
      {text:"만성적인 염증·피로가 있고, 장이 자주 불편하다", pts:{cancer:3}},
+     {text:"플라스틱 용기·주방·식재료 세척 등 생활 속 유해물질이 신경 쓰인다", pts:{cancer:3}},
      {text:"약이나 음식 뒤에 눈꺼풀·입술이 붓거나 두드러기가 올라온 적이 있다", pts:{skin:3}},
-     {text:"치매·뇌졸중·심근경색·당뇨 가족력이 있어 예방이 걱정된다", pts:{prev:3}},
      {text:"해당되는 것이 없다", pts:{}},
    ]},
   {text:"나이 듦(본인 또는 부모님)에 대해 가장 가까운 생각은?",
    options:[
-     {text:"부모님을 보며 내 노후가 어떨지 막막하다", pts:{aging:3}},
-     {text:"복용하는 약과 건강기능식품이 점점 늘어난다", pts:{aging:3}},
-     {text:"배우자·자녀·친구와의 관계, 돌봄과 노후 생활비가 걱정된다", pts:{aging:3}},
+     {text:"'이 나이에 뭘 하겠나' 싶어 새로운 시도와 외출이 줄었다", pts:{aging:3}},
+     {text:"일 말고는 친구·취미·배움처럼 나를 움직이게 할 것이 딱히 없다", pts:{aging:3}},
+     {text:"나이 들수록 근육이 빠질까 걱정돼, 근력운동을 시작해야겠다고 느낀다", pts:{musc:3}},
      {text:"해당되는 것이 없다", pts:{}},
    ]},
   {text:"가족(특히 고령의 부모님)의 건강에 대해 가장 가까운 것은?",
    options:[
      {text:"기운이 없고 걸음이 달라지셨는데, 나이 탓으로만 넘겼다", pts:{emer:3}},
-     {text:"뇌졸중이나 심근경색이 의심될 때 어떻게 해야 할지 모른다", pts:{emer:3}},
-     {text:"가족이 갑자기 쓰러졌을 때 응급처치와 병원 판단이 막막하다", pts:{emer:3}},
-     {text:"부모님 돌봄과 간병을 가족이 감당할 수 있을지 걱정된다", pts:{aging:2,emer:1}},
+     {text:"뇌졸중·심근경색이 의심될 때의 대처법이나, 부모님이 드시는 약을 잘 모른다", pts:{emer:3}},
+     {text:"부모님 돌봄과 간병을 가족이 감당할 수 있을지 걱정된다", pts:{aging:3}},
+     {text:"부모님이 앓은 치매·뇌졸중·당뇨를 보며, 나도 걸릴까 걱정된다", pts:{prev:3}},
      {text:"해당되는 것이 없다", pts:{}},
    ]},
-  {text:"평소 마시는 음료·간식과 먹는 것에 대한 마음은?",
+  {text:"음료·간식과 먹는 습관에 대해 가장 가까운 것은?",
    options:[
-     {text:"믹스커피·주스·단 음료를 자주 마시고, 식후에 단것이 당긴다", pts:{glu:3}},
-     {text:"과일·과일주스는 건강식이라 생각해서 마음껏 먹는다", pts:{glu:3}},
-     {text:"체중 때문에 먹을 때마다 죄책감이 들고, 요요가 반복된다", pts:{diet:3}},
+     {text:"믹스커피·과일주스 같은 단 음료를 자주 마시고, 식후에 단것이 당긴다", pts:{glu:3}},
+     {text:"식사를 급하게 하고, 밥·면·빵부터 먹는다", pts:{glu:3}},
      {text:"다이어트 약이나 식단을 중단했더니 체중이 다시 늘었다", pts:{diet:3}},
+     {text:"초가공식품·간식을 끊기 어렵고, 먹어도 허전하다", pts:{meta:3}},
      {text:"해당되는 것이 없다", pts:{}},
    ]},
   {text:"하루 생활 습관 중 가장 마음에 걸리는 것은?",
    options:[
      {text:"하루 대부분 앉아 있고, 짝다리를 짚거나 다리를 꼬는 습관이 있다", pts:{back:3}},
-     {text:"잠이 안 오면 술이나 커피에 기대는 편이다", pts:{sleep:3}},
-     {text:"건강을 챙길 시간이 없어 검진과 관리를 계속 미룬다", pts:{prev:3}},
+     {text:"졸리면 커피로 버티고, 주말에 잠을 몰아서 잔다", pts:{sleep:3}},
+     {text:"채소·과일이나 운동을 얼마나 해야 충분한지 기준을 모른다", pts:{prev:3}},
+     {text:"술·게임·짧은 영상처럼 빨리 오는 자극을 끊기 어렵다", pts:{horm:3}},
      {text:"해당되는 것이 없다", pts:{}},
    ]}
 ];
@@ -682,7 +684,7 @@ function renderTally(){
 
 function renderQuestion(){
   const q = QUESTIONS[current];
-  document.getElementById('progress-label').textContent = `QUESTION · 문항 ${current+1} / ${QUESTIONS.length}`;
+  document.getElementById('progress-label').textContent = `문항 ${current+1} / ${QUESTIONS.length}`;
   document.getElementById('q-icon').innerHTML = QUESTION_ICONS[current] || '';
   document.getElementById('q-text').textContent = q.text;
   renderTally();
@@ -698,6 +700,8 @@ function renderQuestion(){
   });
 
   document.getElementById('btn-back').style.visibility = current===0 ? 'hidden' : 'visible';
+  document.getElementById('btn-back').disabled = current===0;
+  if(current>0){ try{ document.getElementById('q-text').focus({preventScroll:true}); }catch(e){} }
 }
 
 function selectOption(idx){
@@ -711,6 +715,7 @@ function selectOption(idx){
   } else {
     renderResult();
     show('screen-result');
+    try{ document.getElementById('dx-name').focus({preventScroll:true}); }catch(e){}
   }
 }
 
@@ -751,6 +756,19 @@ function rankCategories(){
 }
 
 
+/* 처방 색상이 글자(흰 배경)나 흰 글자 버튼 배경으로 쓰일 때 대비 4.5:1 이상이 되도록 어둡게 보정 */
+function hexToRgb(h){ h=h.replace('#',''); return [0,2,4].map(i=>parseInt(h.substr(i,2),16)); }
+function relLum(rgb){ const a=rgb.map(v=>{v/=255; return v<=0.03928? v/12.92 : Math.pow((v+0.055)/1.055,2.4);}); return 0.2126*a[0]+0.7152*a[1]+0.0722*a[2]; }
+function readableColor(hex){
+  let rgb = hexToRgb(hex);
+  for(let i=0;i<30;i++){
+    const ratio = 1.05 / (relLum(rgb) + 0.05);
+    if(ratio >= 4.6) break;
+    rgb = rgb.map(v=>Math.round(v*0.93));
+  }
+  return '#' + rgb.map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+
 function fillBook(sfx, cat){
   document.getElementById('book-cta-round'+sfx).textContent = cat.isUpcoming
     ? `공개 예정 신규 회차 · ${cat.expert}`
@@ -762,7 +780,7 @@ function fillBook(sfx, cat){
   coverEl.style.borderColor = cat.color;
   const linkEl = document.getElementById('book-cta-link'+sfx);
   linkEl.href = cat.bookLink;
-  linkEl.style.background = cat.color;
+  linkEl.style.background = readableColor(cat.color);
   const interviewEl = document.getElementById('interview-link'+sfx);
   if(cat.interviewLink){
     interviewEl.href = cat.interviewLink;
@@ -784,15 +802,15 @@ function renderResult(){
   const top = lastTop[0];
   const topCat = CATS[top.key];
   document.getElementById('dx-name').textContent = topCat.name;
-  document.getElementById('dx-name').style.color = topCat.color;
+  document.getElementById('dx-name').style.color = readableColor(topCat.color);
   document.getElementById('dx-reason').innerHTML = topCat.reason;
 
   const noteEl = document.getElementById('dx-note');
   if(top.score === 0){
-    noteEl.textContent = '뚜렷한 신호가 확인되지 않아 기본 예방 처방을 안내해 드려요.';
+    noteEl.textContent = '뚜렷한 신호가 확인되지 않아 기본 예방 처방을 안내합니다.';
     noteEl.classList.remove('hidden');
   } else if(top.pct < 50){
-    noteEl.textContent = '여러 항목이 비슷하게 나왔어요. 아래 2·3순위 처방도 함께 살펴보세요.';
+    noteEl.textContent = '여러 항목이 비슷하게 나왔습니다. 아래 2·3순위 처방도 함께 살펴보세요.';
     noteEl.classList.remove('hidden');
   } else {
     noteEl.classList.add('hidden');
@@ -807,7 +825,7 @@ function renderResult(){
     row.innerHTML = `
       <div class="rank-num">${i+1}</div>
       <div class="rank-body">
-        <div class="rank-top"><span style="color:${cat.color}">${cat.name}</span></div>
+        <div class="rank-top"><span style="color:${readableColor(cat.color)}">${cat.name}</span></div>
         <div class="rank-sub">${cat.eventTitle ? cat.eventTitle : (cat.isUpcoming ? '공개 예정 신규 회차' : '관련 처방전 ' + cat.round + '회차') + ' · ' + cat.expert}</div>
       </div>`;
     list.appendChild(row);
