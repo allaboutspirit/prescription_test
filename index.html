@@ -297,15 +297,16 @@
   }
   .book-cta-label{
     font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;
-    letter-spacing:.02em;color:#9C2F2F;margin-bottom:8px;
+    letter-spacing:.02em;color:#9C2F2F;margin-bottom:4px;
   }
-  .book-cta-body{display:flex;flex-direction:row;align-items:stretch;gap:14px;text-align:left;}
+  .book-cta-body{display:flex;flex-direction:row;align-items:stretch;justify-content:center;gap:24px;text-align:left;}
   .book-cover{
     width:96px;height:auto;aspect-ratio:1748/2480;object-fit:cover;flex-shrink:0;align-self:flex-start;
     background:#D6E2F0;border:2px solid var(--ink);
     box-shadow:4px 4px 0 rgba(27,58,110,0.18);
   }
-  .book-cta-info{display:flex;flex-direction:column;align-items:stretch;flex:1;min-width:0;}
+  /* 책마다 제목 길이가 달라도 표지·글 묶음이 같은 자리에 오도록 정보 칸 폭을 고정(좁은 화면에서는 줄어듦) */
+  .book-cta-info{display:flex;flex-direction:column;align-items:stretch;flex:0 1 172px;min-width:0;}
   .book-cta-round{font-family:'Noto Sans KR',sans-serif;font-size:13px;color:var(--ink-soft);}
   .book-cta-title{
     font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:16px;
@@ -313,17 +314,20 @@
   }
   .book-cta-meta{font-size:13px;line-height:1.45;margin-bottom:8px;}
   .book-cta-author{color:var(--ink);}
+  .book-cta-author, .book-cta-publisher{white-space:nowrap;}
+  .book-cta-meta.stacked .book-cta-publisher{display:block;}
+  .book-cta-meta.stacked .book-cta-publisher::before{display:none;}
   .book-cta-publisher{color:var(--ink-soft);}
   .book-cta-publisher::before{content:"";display:inline-block;width:1px;height:10px;background:var(--line);margin:0 7px;vertical-align:0;}
   .book-cta-link{
-    display:block;width:100%;text-align:center;margin-top:auto;
-    padding:11px 10px;font-size:15px;border-radius:3px;text-decoration:none;
+    display:block;align-self:stretch;width:auto;text-align:center;margin-top:auto;
+    padding:0 18px;min-height:44px;line-height:44px;font-size:14.5px;border-radius:3px;text-decoration:none;
   }
 
   .interview-link{
     display:block;
-    margin-top:8px;
-    padding:10px 10px;min-height:44px;
+    margin-top:6px;align-self:stretch;
+    padding:0 18px;min-height:44px;line-height:41px;
     border:1.5px solid var(--ink);
     border-radius:3px;
     background:transparent;
@@ -343,19 +347,20 @@
   }
   /* 폭 480px 이하(460×720·420×710 iframe, 일반 휴대폰)에서 결과 화면이 710px 안에 들어오도록 간격을 조금 더 줄임 */
   @media (max-width:480px){
-    #screen-result{gap:6px;padding:12px 16px 8px;}
+    #screen-result{gap:6px;padding:12px 16px 4px;}
     #screen-result .clinic-mark{padding-bottom:8px;font-size:13.5px;}
     .rx-slip{padding:10px 14px 12px;}
     .dx-row{margin-bottom:10px;}
     .book-cta{padding:10px 12px;}
     .book-cta-label{margin-bottom:6px;}
-    .book-cover{width:88px;}
+    .book-cover{width:130px;}
     .interview-link{margin-top:6px;}
     .rx-ranklist{padding:6px 12px 2px;}
     .rank-row{padding:4px 0;}
     .rx-footnote{font-size:11.5px;}
     .retry-link{margin-top:-4px;}
   }
+  @media (max-width:400px){ .book-cover{width:116px;} }
   /* 폭이 좁은 휴대폰(380px 이하)에서도 결과 화면이 710px 안에 들어오도록 조금 더 압축 */
   @media (max-width:380px){
     #screen-result{gap:8px;padding:14px 14px 12px;}
@@ -365,7 +370,7 @@
     .rank-top{font-size:14px;}
     .rank-sub{font-size:12px;}
     .rx-slip-head{padding-bottom:4px;margin-bottom:6px;}
-    .book-cover{width:78px;}
+    .book-cover{width:100px;}
     .rx-footnote{font-size:11.5px;}
     .book-cta-title{font-size:15px;margin:0 0 2px;}
     .book-cta-meta{font-size:12.5px;margin-bottom:6px;}
@@ -437,14 +442,14 @@
     </div>
 
     <div class="book-cta" id="book-cta">
-      <div class="book-cta-label">처방 도서</div>
       <div class="book-cta-body">
         <img class="book-cover" id="book-cover" src="" alt="">
         <div class="book-cta-info">
+          <div class="book-cta-label">처방 도서</div>
           <div class="book-cta-title" id="book-cta-title"></div>
           <div class="book-cta-meta"><span class="book-cta-author" id="book-cta-author"></span><span class="book-cta-publisher" id="book-cta-publisher"></span></div>
-          <a class="btn btn-red book-cta-link" id="book-cta-link" href="#" target="_blank" rel="noopener">이 책 보러가기</a>
-          <a class="interview-link" id="interview-link" href="#" target="_blank" rel="noopener">전문가 서면인터뷰 보기</a>
+          <a class="btn btn-red book-cta-link" id="book-cta-link" href="#" target="_blank" rel="noopener">책 보러가기</a>
+          <a class="interview-link" id="interview-link" href="#" target="_blank" rel="noopener">서면 인터뷰 보기</a>
         </div>
       </div>
     </div>
@@ -727,8 +732,31 @@ function show(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
+  if(id === 'screen-result') fitBookTitle();
   postHeight(true);
 }
+
+/* 처방 도서 제목이 3줄 이상이면 글자를 조금씩 줄여 2줄 안에 맞춘다 (예: 위고비 사용설명서) */
+function fitBookTitle(){
+  const el = document.getElementById('book-cta-title');
+  if(!el) return;
+  el.style.fontSize = '';
+  const lh = parseFloat(getComputedStyle(el).lineHeight) / parseFloat(getComputedStyle(el).fontSize);
+  let size = parseFloat(getComputedStyle(el).fontSize);
+  while(size > 12.5 && el.getBoundingClientRect().height > size * lh * 2 + 1){
+    size -= 0.5;
+    el.style.fontSize = size + 'px';
+  }
+  // 저자·출판사가 한 줄에 안 들어가면 구분선 없이 두 줄로
+  const meta = document.querySelector('.book-cta-meta');
+  if(meta){
+    meta.classList.remove('stacked');
+    const a = document.getElementById('book-cta-author').getBoundingClientRect();
+    const p = document.getElementById('book-cta-publisher').getBoundingClientRect();
+    if(p.top > a.top + 2) meta.classList.add('stacked');
+  }
+}
+window.addEventListener('resize', ()=>{ if(document.getElementById('screen-result').classList.contains('active')) fitBookTitle(); });
 
 /* 기획전 페이지에 iframe으로 넣었을 때: 내용 높이를 부모 페이지에 알려 iframe 안 스크롤(이중 스크롤)을 없앤다.
    부모 페이지 쪽 수신 코드는 별도 안내 파일 참고. 단독으로 열면 아무 동작도 하지 않는다. */
@@ -874,7 +902,7 @@ function fillBook(sfx, cat){
   const interviewEl = document.getElementById('interview-link'+sfx);
   if(cat.interviewLink){
     interviewEl.href = cat.interviewLink;
-    interviewEl.textContent = '전문가 서면인터뷰 보기';
+    interviewEl.textContent = '서면 인터뷰 보기';
     interviewEl.setAttribute('aria-label', `${cat.expert} 서면인터뷰 보기`);
     interviewEl.classList.remove('hidden');
   } else {
