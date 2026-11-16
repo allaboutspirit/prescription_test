@@ -301,7 +301,7 @@
   }
   .book-cta-body{display:flex;flex-direction:row;align-items:stretch;gap:14px;text-align:left;}
   .book-cover{
-    width:96px;height:auto;aspect-ratio:2/3;object-fit:cover;flex-shrink:0;align-self:flex-start;
+    width:96px;height:auto;aspect-ratio:1748/2480;object-fit:cover;flex-shrink:0;align-self:flex-start;
     background:#D6E2F0;border:2px solid var(--ink);
     box-shadow:4px 4px 0 rgba(27,58,110,0.18);
   }
@@ -468,6 +468,7 @@
 */
 const CATS = {
   glu:   {name:"혈당관리",     round:2,  expert:"조영민 교수", color:"#C97B3E",
+          coverFile:"covers/02.jpg",
           bookAuthor:"조영민", bookPublisher:"서삼독",
           eventTitle:"이달의 처방전 2 - 가장 과학적인 혈당 스파이크 솔루션",
           reason:"식후 나른함과 혈당 변화 신호가 감지되었습니다.|<u>혈당 관리가 우선적으로 필요</u>해 보입니다.",
@@ -475,6 +476,7 @@ const CATS = {
           bookLink:"https://www.yes24.com/product/goods/149661560",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21568906"},
   diet:  {name:"다이어트",     round:3,  expert:"이성민 의사", color:"#B2504A",
+          coverFile:"covers/03.jpg",
           bookAuthor:"이성민", bookPublisher:"히포크라테스",
           eventTitle:"이달의 처방전 3 - 호르몬 다이어트의 시대가 왔다",
           reason:"체중 변화와 요요가 반복되는 패턴이 확인되었습니다.|<u>체계적인 체중 관리 처방</u>이 필요합니다.",
@@ -482,6 +484,7 @@ const CATS = {
           bookLink:"https://www.yes24.com/product/goods/153039075",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21703000"},
   musc:  {name:"근력운동",     round:4,  expert:"이금호 시니어 운동 전문가", color:"#4F7942",
+          coverFile:"covers/04.jpg",
           bookAuthor:"이금호", bookPublisher:"청림Life",
           eventTitle:"이달의 처방전 4 - 달라진 몸에는 달라진 운동이 필요하다",
           reason:"근력 저하로 인한 체력 저하 신호가 뚜렷합니다.|<u>근력 회복이 시급한 처방</u>으로 진단됩니다.",
@@ -489,6 +492,7 @@ const CATS = {
           bookLink:"https://www.yes24.com/product/goods/163500163",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21789284"},
   horm:  {name:"호르몬",       round:5,  expert:"안철우 교수", color:"#8E6BA8",
+          coverFile:"covers/05.jpg",
           bookAuthor:"안철우", bookPublisher:"한스미디어",
           eventTitle:"이달의 처방전 5 - 하루 15분 호르몬 건강 습관 만들기",
           reason:"호르몬 불균형에서 흔히 나타나는<br>신호들이 확인되었습니다.|<u>호르몬 밸런스 처방</u>이 필요합니다.",
@@ -496,6 +500,7 @@ const CATS = {
           bookLink:"https://www.yes24.com/product/goods/164652768",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21861171"},
   emer:  {name:"고령자 응급처치", round:6, expert:"김준성 교수", color:"#A83232",
+          coverFile:"covers/06.jpg",
           bookAuthor:"김준성", bookPublisher:"알에이치코리아(RHK)",
           eventTitle:"이달의 처방전 6 - 고령자 응급 상황 빠른 대처가 필수다",
           reason:"돌발 상황 대처 역량 보강이 필요한 신호입니다.|<u>응급처치 지식 처방</u>을 권합니다.",
@@ -503,6 +508,7 @@ const CATS = {
           bookLink:"https://www.yes24.com/product/goods/175305664",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21953830"},
   meta:  {name:"대사건강",     round:7,  expert:"우창윤 교수", color:"#C08A2E",
+          coverFile:"covers/07.jpg",
           bookAuthor:"우창윤", bookPublisher:"웅진지식하우스",
           eventTitle:"이달의 처방전 7 - 평생 가볍게 살아가는 4주 대사 회복 프로젝트",
           reason:"기초대사 저하로 보이는 신호가<br>여러 항목에서 확인되었습니다.|<u>대사 회복 처방</u>이 필요합니다.",
@@ -510,6 +516,7 @@ const CATS = {
           bookLink:"https://www.yes24.com/product/goods/181119788",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22041902"},
   back:  {name:"허리·자세",    round:8,  expert:"이대영 원장", color:"#3E6B8A",
+          coverFile:"covers/08.jpg",
           bookAuthor:"이대영", bookPublisher:"한스미디어",
           eventTitle:"이달의 처방전 8 - 통증 완화를 넘어 '잘 사는 몸'을 위한 척추 재활의 정석",
           reason:"허리와 자세 관련 불편함이 반복적으로 나타났습니다.|<u>자세 교정 처방</u>을 권합니다.",
@@ -517,6 +524,7 @@ const CATS = {
           bookLink:"https://www.yes24.com/product/goods/182493078",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22105533"},
   prev:  {name:"질병예방",     round:9,  expert:"오수연 교수", color:"#5A8F7B",
+          coverFile:"covers/09.jpg",
           bookAuthor:"오수연", bookPublisher:"생각의힘",
           eventTitle:"이달의 처방전 9 - 아프기 전에 챙겨야 할 몸이 좋아하는 숫자들",
           reason:"정기 검진과 예방 관리가<br>미뤄지고 있는 신호가 확인되었습니다.|<u>예방 관리 처방</u>이 우선입니다.",
@@ -524,6 +532,7 @@ const CATS = {
           bookLink:"https://www.yes24.com/product/goods/186939270",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22146151"},
   sleep: {name:"수면",         round:10, expert:"이준용 정신건강의학과 전문의", color:"#4A4E69",
+          coverFile:"covers/10.jpg",
           bookAuthor:"이준용", bookPublisher:"미래의창",
           eventTitle:"이달의 처방전 10 - 무너진 몸과 마음을 되돌리는 수면의 과학",
           reason:"수면의 질 저하가 전반적인 컨디션에<br>영향을 주고 있는 것으로 보입니다.|<u>숙면 처방</u>이 필요합니다.",
@@ -531,6 +540,7 @@ const CATS = {
           bookLink:"https://www.yes24.com/product/goods/193984774",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22296882"},
   skin:  {name:"피부·알레르기(두드러기)", round:11, expert:"이동훈·강혜련 교수", color:"#C97FA0",
+          coverFile:"covers/11.jpg",
           bookAuthor:"이동훈, 강혜련", bookPublisher:"시공사",
           eventTitle:"이달의 처방전 11 - 두드러기의 진짜 원인과 해결책",
           reason:"이유 없는 가려움과 피부 트러블이<br>반복되는 신호가 확인되었습니다.|<u>두드러기·알레르기 처방</u>이 필요합니다.",
@@ -538,6 +548,7 @@ const CATS = {
           bookLink:"https://www.yes24.com/product/goods/194254561",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22340733"},
   aging: {name:"노화·건강한 노년", round:12, expert:"김광일 교수", color:"#7A9E7E",
+          coverFile:"covers/12.jpg",
           bookAuthor:"김광일", bookPublisher:"청림Life",
           eventTitle:"이달의 처방전 12 - 오래 사는 법보다 중요한 후회 없이 나이 드는 법",
           reason:"나이 듦에 대한 불안과 변화 신호가 확인되었습니다.|<u>후회 없이 나이 드는 준비</u>가 필요합니다.",
@@ -545,6 +556,7 @@ const CATS = {
           bookLink:"https://www.yes24.com/product/goods/196681853",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22458716"},
   cancer:{name:"암 예방 생활습관", round:13, expert:"강형창 전문의", color:"#A65E4E",
+          coverFile:"covers/13.jpg",
           bookAuthor:"강형창", bookPublisher:"북웨이브",
           eventTitle:"이달의 처방전 13 - 오늘의 생활 습관이 암을 이기는 몸을 만든다",
           reason:"암 위험을 키우는 생활 습관 신호가 확인되었습니다.|<u>일상 습관부터 점검</u>하는 처방이 필요합니다.",
@@ -846,7 +858,14 @@ function fillBook(sfx, cat){
   document.getElementById('book-cta-author'+sfx).textContent = cat.bookAuthor + ' 저';
   document.getElementById('book-cta-publisher'+sfx).textContent = cat.bookPublisher;
   const coverEl = document.getElementById('book-cover'+sfx);
-  coverEl.src = cat.bookCover;
+  // 저장소에 고화질 표지(covers/)가 있으면 그것을 쓰고, 불러오지 못하면 예스24 이미지로 대체
+  coverEl.onerror = null;
+  if(cat.coverFile){
+    coverEl.onerror = function(){ this.onerror = null; this.src = cat.bookCover; };
+    coverEl.src = cat.coverFile;
+  } else {
+    coverEl.src = cat.bookCover;
+  }
   coverEl.alt = cat.bookTitle;
   coverEl.style.borderColor = cat.color;
   const linkEl = document.getElementById('book-cta-link'+sfx);
