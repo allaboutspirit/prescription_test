@@ -226,7 +226,7 @@
   }
 
   /* ---------- 결과: 처방전 ---------- */
-  #screen-result{gap:10px;padding:16px 18px 14px;}
+  #screen-result{gap:8px;padding:14px 18px 10px;}
   .result-lead{
     font-family:'Noto Sans KR',sans-serif;font-size:13px;
     color:var(--ink-soft);letter-spacing:.02em;text-align:center;
@@ -237,8 +237,8 @@
     background:var(--paper);
     border:1.5px solid var(--ink);
     position:relative;
-    padding:14px 16px 14px;
-    margin-top:6px;
+    padding:12px 16px 12px;
+    margin-top:8px;
   }
   .rx-slip::before{
     content:"";
@@ -249,10 +249,10 @@
   .rx-slip-head{
     display:flex;justify-content:space-between;align-items:flex-start;
     border-bottom:1.5px dashed var(--line);
-    padding-bottom:8px;margin-bottom:10px;align-items:baseline;
+    padding-bottom:6px;margin-bottom:8px;align-items:baseline;
   }
   .rx-slip-head .name{
-    font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:18px;
+    font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:16px;letter-spacing:.04em;
   }
   .rx-meta{
     font-family:'Noto Sans KR',sans-serif;font-size:12px;color:var(--ink-soft);
@@ -260,13 +260,13 @@
   }
 
   .dx-row{display:flex;flex-direction:column;gap:2px;margin-bottom:8px;}
-  .dx-event{font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin:0;}
-  .dx-name{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:26px;line-height:1.25;word-break:keep-all;}
+  .dx-event{font-size:12.5px;line-height:1.5;letter-spacing:.01em;color:var(--ink-soft);margin:0;}
+  .dx-name{font-family:'Noto Sans KR',sans-serif;font-weight:800;font-size:26px;line-height:1.25;letter-spacing:.03em;word-break:keep-all;}
   .dx-match{
     font-family:'Noto Sans KR',sans-serif;font-weight:600;font-size:12px;
     padding:4px 10px;border-radius:20px;color:#fff;white-space:nowrap;
   }
-  .dx-reason{font-size:14px;line-height:1.6;color:var(--ink-soft);margin:0;}
+  .dx-reason{font-size:14px;line-height:1.65;letter-spacing:.01em;color:var(--ink-soft);margin:0;}
   .dx-note{font-size:13px;line-height:1.6;color:var(--ink-soft);background:var(--paper-alt);border-left:3px solid var(--line);padding:7px 10px;margin:8px 0 0;}
   .dx-note.hidden{display:none;}
   .dx-reason u{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;color:var(--ink);font-weight:500;}
@@ -277,9 +277,9 @@
   .rank-row{display:flex;gap:10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--line);}
   .rank-row:last-child{border-bottom:none;}
   .rank-num{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:14px;color:var(--ink-soft);width:14px;flex-shrink:0;}
-  .rank-body{flex:1;min-width:0;display:flex;gap:8px;align-items:baseline;}
-  .rank-top{font-size:14.5px;font-weight:700;white-space:nowrap;flex-shrink:0;}
-  .rank-sub{font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
+  .rank-body{flex:1;min-width:0;}
+  .rank-top{display:inline;font-size:14.5px;font-weight:700;letter-spacing:.02em;line-height:1.45;margin-right:6px;}
+  .rank-sub{display:inline;font-size:12.5px;line-height:1.45;color:var(--ink-soft);}
 
   .rx-footnote{
     text-align:center;font-size:12px;color:var(--ink-soft);
@@ -339,13 +339,32 @@
     text-align:center;margin-top:-6px;font-size:14px;min-height:44px;padding:8px 16px;
     color:var(--ink-soft);text-decoration:underline;cursor:pointer;background:none;border:none;
   }
+  /* 폭 440px 이하(420×710 iframe, 일반 휴대폰)에서 결과 화면이 710px 안에 들어오도록 간격을 조금 더 줄임 */
+  @media (max-width:440px){
+    #screen-result{gap:6px;padding:12px 16px 8px;}
+    #screen-result .clinic-mark{padding-bottom:8px;font-size:13.5px;}
+    .rx-slip{padding:10px 14px 12px;}
+    .dx-row{margin-bottom:6px;}
+    .book-cta{padding:10px 12px;}
+    .book-cta-label{margin-bottom:6px;}
+    .book-cover{width:88px;}
+    .interview-link{margin-top:6px;}
+    .rx-ranklist{padding:6px 12px 2px;}
+    .rank-row{padding:4px 0;}
+    .rx-footnote{font-size:11.5px;}
+    .retry-link{margin-top:-4px;}
+  }
   /* 폭이 좁은 휴대폰(380px 이하)에서도 결과 화면이 710px 안에 들어오도록 조금 더 압축 */
   @media (max-width:380px){
     #screen-result{gap:8px;padding:14px 14px 12px;}
     .rx-slip{padding:12px 14px;}
-    .dx-name{font-size:24px;}
-    .dx-reason{font-size:13.5px;line-height:1.55;}
-    .book-cover{width:84px;}
+    .dx-name{font-size:23px;}
+    .dx-reason{font-size:13px;line-height:1.55;}
+    .rank-top{font-size:14px;}
+    .rank-sub{font-size:12px;}
+    .rx-slip-head{padding-bottom:4px;margin-bottom:6px;}
+    .book-cover{width:78px;}
+    .rx-footnote{font-size:11.5px;}
     .book-cta-title{font-size:15px;margin:0 0 2px;}
     .book-cta-meta{font-size:12.5px;margin-bottom:6px;}
     .rank-row{padding:5px 0;}
@@ -858,7 +877,8 @@ function renderResult(){
   const topCat = CATS[top.key];
   document.getElementById('dx-name').textContent = topCat.name;
   document.getElementById('dx-name').style.color = readableColor(topCat.color);
-  document.getElementById('dx-reason').innerHTML = topCat.reason;
+  // 처방 사유는 문장마다 줄을 나눠 읽기 쉽게
+  document.getElementById('dx-reason').innerHTML = topCat.reason.replace(/([.!?])\s+/g, '$1<br>');
   document.getElementById('dx-event').textContent = eventLine(topCat);
 
   const noteEl = document.getElementById('dx-note');
@@ -882,8 +902,7 @@ function renderResult(){
     row.innerHTML = `
       <div class="rank-num">${i+2}</div>
       <div class="rank-body">
-        <div class="rank-top"><span style="color:${readableColor(cat.color)}">${cat.name}</span></div>
-        <div class="rank-sub" title="${eventLine(cat)}">${eventLine(cat).replace(/^이달의 처방전 \d+ - /,'')}</div>
+        <span class="rank-top" style="color:${readableColor(cat.color)}">${cat.name}</span><span class="rank-sub">${eventLine(cat).replace(/^이달의 처방전 \d+ - /,'')}</span>
       </div>`;
     list.appendChild(row);
   });
