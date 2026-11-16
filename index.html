@@ -345,8 +345,8 @@
     text-align:center;margin-top:-6px;font-size:14px;min-height:44px;padding:8px 16px;
     color:var(--ink-soft);text-decoration:underline;cursor:pointer;background:none;border:none;
   }
-  /* 폭 480px 이하(460×720·420×710 iframe, 일반 휴대폰)에서 결과 화면이 710px 안에 들어오도록 간격을 조금 더 줄임 */
-  @media (max-width:480px){
+  /* 테스트 본문 폭(최대 460px) 기준 결과 화면 배치. PC에서 링크를 바로 열어도 같은 배치가 되도록 화면 폭과 상관없이 적용. 결과 화면이 710px 안에 들어오도록 간격을 조금 더 줄임 */
+  @media all{
     #screen-result{gap:6px;padding:12px 16px 4px;}
     #screen-result .clinic-mark{padding-bottom:8px;font-size:13.5px;}
     .rx-slip{padding:10px 14px 12px;}
