@@ -70,12 +70,16 @@
     flex-direction:column;
   }
   .screen.active{display:flex;}
+  /* 기획전 페이지에 iframe(420×710 고정)으로 들어갈 때: 100vh가 iframe 높이가 되어 화면이 꽉 찬다 */
+  html.embedded body{background:transparent;}
+  html.embedded #app{box-shadow:none;}
   @media (prefers-reduced-motion:no-preference){
     .screen.active{animation:fadeIn .4s ease both;}
   }
   @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 
   /* ---------- 공통 헤더 ---------- */
+  #screen-result .clinic-mark{padding-bottom:10px;font-size:14px;}
   .clinic-mark{
     display:flex;align-items:center;justify-content:space-between;gap:8px;
     font-family:'Noto Sans KR',sans-serif;
@@ -93,7 +97,7 @@
     position:relative;
     overflow:hidden;
     background:linear-gradient(180deg,#A9C7EA 0%,#C2D8F1 55%,#D9E8F8 100%);
-    padding:44px 22px 40px;
+    padding:28px 20px 22px;
   }
   #screen-intro::after{
     content:"";
@@ -105,7 +109,7 @@
     pointer-events:none;
   }
   #screen-intro > *{ position:relative; z-index:1; }
-  .intro-top{ margin-top:8px; text-align:center; }
+  .intro-top{ margin-top:0; text-align:center; }
   .intake-label{
     display:inline-block;
     font-family:'Noto Sans KR',sans-serif;
@@ -114,7 +118,7 @@
     border:1px solid rgba(27,58,110,0.45);
     background:rgba(255,255,255,0.7);
     padding:5px 13px;
-    margin-bottom:18px;
+    margin-bottom:14px;
   }
   .intro-title{
     font-family:'Noto Sans KR',sans-serif;
@@ -123,14 +127,14 @@
   }
   .intro-meta{
     font-size:13.5px;color:#2F5185;
-    margin-bottom:22px;
+    margin-bottom:16px;
   }
   .intro-icons{
     display:grid;
     grid-template-columns:repeat(8, 1fr);
     gap:6px;
     max-width:340px;
-    margin:0 auto 26px;
+    margin:0 auto 18px;
   }
   .intro-icons .icon-box{
     aspect-ratio:1/1;
@@ -146,8 +150,8 @@
     border:1px solid var(--line);
     background:#fff;
     border-radius:4px;
-    padding:16px 18px;
-    font-size:14px;line-height:1.8;
+    padding:14px 16px;
+    font-size:14px;line-height:1.7;
     color:var(--ink-soft);
     margin-bottom:8px;
     text-align:left;
@@ -170,10 +174,10 @@
   }
   .btn-red{background:var(--rx-red);}
   .btn-gold{background:var(--gold);color:var(--ink);}
-  #screen-intro .btn{ margin-top:24px; box-shadow:0 6px 16px rgba(27,58,110,0.18); }
+  #screen-intro .btn{ margin-top:18px; box-shadow:0 6px 16px rgba(27,58,110,0.18); }
 
   /* ---------- 문진 (질문) ---------- */
-  #screen-quiz{gap:22px;}
+  #screen-quiz{gap:14px;padding-top:20px;}
   .chart-progress{
     display:flex;align-items:center;justify-content:space-between;
     margin-bottom:4px;
@@ -189,24 +193,24 @@
   }
   .tally i.done{background:var(--ink);border-color:var(--ink);}
 
+  .q-head{display:flex;gap:12px;align-items:flex-start;margin:4px 0 16px;}
   .q-icon{
-    width:46px;height:46px;color:var(--ink);
-    margin-bottom:16px;
+    width:38px;height:38px;color:var(--ink);flex-shrink:0;margin-top:2px;
   }
   .q-icon svg{width:100%;height:100%;display:block;}
 
   .q-text{
     font-family:'Noto Sans KR',sans-serif;font-weight:700;
-    font-size:21px;line-height:1.5;margin:0 0 22px;word-break:keep-all;
+    font-size:20px;line-height:1.45;margin:0;word-break:keep-all;
   }
-  .options{display:flex;flex-direction:column;gap:11px;}
+  .options{display:flex;flex-direction:column;gap:8px;}
   .opt-btn{
     text-align:left;
     background:var(--paper-alt);
     border:1.5px solid var(--line);
     border-radius:3px;
-    padding:15px 16px;
-    font-size:15.5px;line-height:1.55;color:var(--ink);
+    padding:12px 14px;min-height:48px;
+    font-size:15.5px;line-height:1.5;color:var(--ink);
     cursor:pointer;
     transition:border-color .15s, background .15s;
   }
@@ -215,25 +219,25 @@
   .q-text:focus, #screen-result h2:focus{outline:none;}
 
   .q-back{
-    margin-top:auto;padding:12px 8px 12px 0;min-height:44px;
+    margin-top:6px;padding:10px 8px 4px 0;min-height:44px;
     font-size:14.5px;color:var(--ink-soft);
     background:none;border:none;text-decoration:underline;
     cursor:pointer;align-self:flex-start;
   }
 
   /* ---------- 결과: 처방전 ---------- */
-  #screen-result{gap:18px;}
+  #screen-result{gap:10px;padding:16px 18px 14px;}
   .result-lead{
     font-family:'Noto Sans KR',sans-serif;font-size:13px;
     color:var(--ink-soft);letter-spacing:.02em;text-align:center;
-    margin-top:6px;
+    margin:0;font-size:12.5px;
   }
 
   .rx-slip{
     background:var(--paper);
     border:1.5px solid var(--ink);
     position:relative;
-    padding:24px 20px 22px;
+    padding:14px 16px 14px;
     margin-top:6px;
   }
   .rx-slip::before{
@@ -245,77 +249,84 @@
   .rx-slip-head{
     display:flex;justify-content:space-between;align-items:flex-start;
     border-bottom:1.5px dashed var(--line);
-    padding-bottom:14px;margin-bottom:16px;
+    padding-bottom:8px;margin-bottom:10px;align-items:baseline;
   }
   .rx-slip-head .name{
-    font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:24px;
+    font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:18px;
   }
   .rx-meta{
     font-family:'Noto Sans KR',sans-serif;font-size:12px;color:var(--ink-soft);
     text-align:right;line-height:1.6;
   }
 
-  .dx-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-  .dx-name{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:28px;line-height:1.25;word-break:keep-all;}
+  .dx-row{display:flex;flex-direction:column;gap:2px;margin-bottom:8px;}
+  .dx-event{font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin:0;}
+  .dx-name{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:26px;line-height:1.25;word-break:keep-all;}
   .dx-match{
     font-family:'Noto Sans KR',sans-serif;font-weight:600;font-size:12px;
     padding:4px 10px;border-radius:20px;color:#fff;white-space:nowrap;
   }
-  .dx-reason{font-size:14.5px;line-height:1.7;color:var(--ink-soft);margin-bottom:18px;}
-  .dx-note{font-size:13px;line-height:1.6;color:var(--ink-soft);background:var(--paper-alt);border-left:3px solid var(--line);padding:9px 12px;margin:-6px 0 18px;}
+  .dx-reason{font-size:14px;line-height:1.6;color:var(--ink-soft);margin:0;}
+  .dx-note{font-size:13px;line-height:1.6;color:var(--ink-soft);background:var(--paper-alt);border-left:3px solid var(--line);padding:7px 10px;margin:8px 0 0;}
   .dx-note.hidden{display:none;}
   .dx-reason u{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;color:var(--ink);font-weight:500;}
 
-  .rx-ranklist{border-top:1.5px dashed var(--line);padding-top:14px;}
-  .rank-row{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);}
+  .rx-ranklist{border:1.5px solid var(--line);background:var(--paper);padding:8px 14px 4px;}
+  .rx-ranklist.hidden{display:none;}
+  .ranklist-label{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:0;}
+  .rank-row{display:flex;gap:10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--line);}
   .rank-row:last-child{border-bottom:none;}
-  .rank-num{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:15px;color:var(--ink-soft);width:20px;}
-  .rank-body{flex:1;}
-  .rank-top{display:flex;justify-content:space-between;font-size:15px;font-weight:700;}
-  .rank-sub{font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin-top:2px;}
+  .rank-num{font-family:'Noto Sans KR',sans-serif;font-weight:900;font-size:14px;color:var(--ink-soft);width:14px;flex-shrink:0;}
+  .rank-body{flex:1;min-width:0;display:flex;gap:8px;align-items:baseline;}
+  .rank-top{font-size:14.5px;font-weight:700;white-space:nowrap;flex-shrink:0;}
+  .rank-sub{font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
 
   .rx-footnote{
     text-align:center;font-size:12px;color:var(--ink-soft);
-    margin-top:16px;letter-spacing:.02em;
+    margin:0;letter-spacing:.02em;
   }
 
   .book-cta{
-    margin-top:22px;
+    margin-top:0;
     border:1.5px solid var(--line);
     background:var(--paper-alt);
     border-radius:3px;
-    padding:16px;
+    padding:12px 14px;
   }
   .book-cta-label{
     font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;
-    letter-spacing:.02em;color:#9C2F2F;margin-bottom:16px;text-align:center;
+    letter-spacing:.02em;color:#9C2F2F;margin-bottom:8px;
   }
-  .book-cta-body{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;}
+  .book-cta-body{display:flex;flex-direction:row;align-items:stretch;gap:14px;text-align:left;}
   .book-cover{
-    width:168px;height:auto;aspect-ratio:2/3;object-fit:cover;flex-shrink:0;
+    width:96px;height:auto;aspect-ratio:2/3;object-fit:cover;flex-shrink:0;align-self:flex-start;
     background:#D6E2F0;border:2px solid var(--ink);
-    box-shadow:6px 6px 0 rgba(27,58,110,0.18);
+    box-shadow:4px 4px 0 rgba(27,58,110,0.18);
   }
-  .book-cta-info{display:flex;flex-direction:column;align-items:center;width:100%;min-width:0;}
+  .book-cta-info{display:flex;flex-direction:column;align-items:stretch;flex:1;min-width:0;}
   .book-cta-round{font-family:'Noto Sans KR',sans-serif;font-size:13px;color:var(--ink-soft);}
   .book-cta-title{
-    font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:18px;
-    line-height:1.45;margin:6px 0 16px;word-break:keep-all;
+    font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:16px;
+    line-height:1.4;margin:0 0 4px;word-break:keep-all;
   }
+  .book-cta-meta{font-size:13px;line-height:1.45;margin-bottom:8px;}
+  .book-cta-author{color:var(--ink);}
+  .book-cta-publisher{color:var(--ink-soft);}
+  .book-cta-publisher::before{content:"";display:inline-block;width:1px;height:10px;background:var(--line);margin:0 7px;vertical-align:0;}
   .book-cta-link{
-    display:block;width:100%;text-align:center;
-    padding:14px 16px;font-size:15px;border-radius:3px;text-decoration:none;
+    display:block;width:100%;text-align:center;margin-top:auto;
+    padding:11px 10px;font-size:15px;border-radius:3px;text-decoration:none;
   }
 
   .interview-link{
     display:block;
-    margin-top:16px;
-    padding:15px 20px;
+    margin-top:8px;
+    padding:10px 10px;min-height:44px;
     border:1.5px solid var(--ink);
     border-radius:3px;
     background:transparent;
     font-family:'Noto Sans KR',sans-serif;
-    font-size:15px;font-weight:700;
+    font-size:14px;font-weight:700;
     color:var(--ink);
     text-align:center;
     text-decoration:none;
@@ -325,8 +336,19 @@
   .interview-link.hidden{display:none;}
 
   .retry-link{
-    text-align:center;margin-top:14px;font-size:14.5px;min-height:44px;padding:10px 16px;
+    text-align:center;margin-top:-6px;font-size:14px;min-height:44px;padding:8px 16px;
     color:var(--ink-soft);text-decoration:underline;cursor:pointer;background:none;border:none;
+  }
+  /* 폭이 좁은 휴대폰(380px 이하)에서도 결과 화면이 710px 안에 들어오도록 조금 더 압축 */
+  @media (max-width:380px){
+    #screen-result{gap:8px;padding:14px 14px 12px;}
+    .rx-slip{padding:12px 14px;}
+    .dx-name{font-size:24px;}
+    .dx-reason{font-size:13.5px;line-height:1.55;}
+    .book-cover{width:84px;}
+    .book-cta-title{font-size:15px;margin:0 0 2px;}
+    .book-cta-meta{font-size:12.5px;margin-bottom:6px;}
+    .rank-row{padding:5px 0;}
   }
 </style>
 </head>
@@ -364,8 +386,10 @@
     </div>
 
     <div>
-      <div class="q-icon" id="q-icon" aria-hidden="true"></div>
-      <h2 class="q-text" id="q-text" tabindex="-1"></h2>
+      <div class="q-head">
+        <div class="q-icon" id="q-icon" aria-hidden="true"></div>
+        <h2 class="q-text" id="q-text" tabindex="-1"></h2>
+      </div>
       <div class="options" id="q-options" role="group" aria-labelledby="q-text"></div>
     </div>
 
@@ -385,13 +409,10 @@
 
       <div class="dx-row">
         <h2 class="dx-name" id="dx-name" tabindex="-1" style="margin:0;"></h2>
+        <p class="dx-event" id="dx-event"></p>
       </div>
       <p class="dx-reason" id="dx-reason"></p>
       <p class="dx-note hidden" id="dx-note"></p>
-
-      <div class="rx-ranklist" id="rx-ranklist"></div>
-
-      <p class="rx-footnote">본 결과는 참고용 콘텐츠이며 의학적 진단을 대신하지 않습니다.</p>
     </div>
 
     <div class="book-cta" id="book-cta">
@@ -399,13 +420,17 @@
       <div class="book-cta-body">
         <img class="book-cover" id="book-cover" src="" alt="">
         <div class="book-cta-info">
-          <div class="book-cta-round" id="book-cta-round"></div>
           <div class="book-cta-title" id="book-cta-title"></div>
+          <div class="book-cta-meta"><span class="book-cta-author" id="book-cta-author"></span><span class="book-cta-publisher" id="book-cta-publisher"></span></div>
           <a class="btn btn-red book-cta-link" id="book-cta-link" href="#" target="_blank" rel="noopener">이 책 보러가기</a>
+          <a class="interview-link" id="interview-link" href="#" target="_blank" rel="noopener">전문가 서면인터뷰 보기</a>
         </div>
       </div>
-      <a class="interview-link" id="interview-link" href="#" target="_blank" rel="noopener">이 처방을 내린 전문가 서면인터뷰 보기 →</a>
     </div>
+
+    <div class="rx-ranklist" id="rx-ranklist"></div>
+
+    <p class="rx-footnote">본 결과는 참고용 콘텐츠이며 의학적 진단을 대신하지 않습니다.</p>
 
     <button class="retry-link" onclick="restartQuiz()">테스트 다시 하기</button>
   </section>
@@ -422,72 +447,84 @@
 */
 const CATS = {
   glu:   {name:"혈당관리",     round:2,  expert:"조영민 교수", color:"#C97B3E",
+          bookAuthor:"조영민", bookPublisher:"서삼독",
           eventTitle:"이달의 처방전 2 - 가장 과학적인 혈당 스파이크 솔루션",
           reason:"식후 나른함과 혈당 변화 신호가 감지되었습니다. <u>혈당 관리가 우선적으로 필요</u>해 보입니다.",
           bookTitle:"혈당 스파이크 제로", bookCover:"https://image.yes24.com/goods/149661560/XL",
           bookLink:"https://www.yes24.com/product/goods/149661560",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21568906"},
   diet:  {name:"다이어트",     round:3,  expert:"이성민 의사", color:"#B2504A",
+          bookAuthor:"이성민", bookPublisher:"히포크라테스",
           eventTitle:"이달의 처방전 3 - 호르몬 다이어트의 시대가 왔다",
           reason:"체중 변화와 요요가 반복되는 패턴이 확인되었습니다. <u>체계적인 체중 관리 처방</u>이 필요합니다.",
           bookTitle:"성공적인 다이어트를 위한 위고비(GLP-1) 사용설명서", bookCover:"https://image.yes24.com/goods/153039075/XL",
           bookLink:"https://www.yes24.com/product/goods/153039075",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21703000"},
   musc:  {name:"근력운동",     round:4,  expert:"이금호 시니어 운동 전문가", color:"#4F7942",
+          bookAuthor:"이금호", bookPublisher:"청림Life",
           eventTitle:"이달의 처방전 4 - 달라진 몸에는 달라진 운동이 필요하다",
           reason:"근력 저하로 인한 체력 저하 신호가 뚜렷합니다. <u>근력 회복이 시급한 처방</u>으로 진단됩니다.",
           bookTitle:"100세 근력", bookCover:"https://image.yes24.com/goods/163500163/XL",
           bookLink:"https://www.yes24.com/product/goods/163500163",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21789284"},
   horm:  {name:"호르몬",       round:5,  expert:"안철우 교수", color:"#8E6BA8",
+          bookAuthor:"안철우", bookPublisher:"한스미디어",
           eventTitle:"이달의 처방전 5 - 하루 15분 호르몬 건강 습관 만들기",
           reason:"호르몬 불균형에서 흔히 나타나는 신호들이 확인되었습니다. <u>호르몬 밸런스 처방</u>이 필요합니다.",
           bookTitle:"하루 15분 호르몬 혁명", bookCover:"https://image.yes24.com/goods/164652768/XL",
           bookLink:"https://www.yes24.com/product/goods/164652768",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21861171"},
   emer:  {name:"고령자 응급처치", round:6, expert:"김준성 교수", color:"#A83232",
+          bookAuthor:"김준성", bookPublisher:"알에이치코리아(RHK)",
           eventTitle:"이달의 처방전 6 - 고령자 응급 상황 빠른 대처가 필수다",
           reason:"돌발 상황 대처 역량 보강이 필요한 신호입니다. <u>응급처치 지식 처방</u>을 권합니다.",
           bookTitle:"온 가족이 함께 알아야 할 고령자 응급대처법", bookCover:"https://image.yes24.com/goods/175305664/XL",
           bookLink:"https://www.yes24.com/product/goods/175305664",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/21953830"},
   meta:  {name:"대사건강",     round:7,  expert:"우창윤 교수", color:"#C08A2E",
+          bookAuthor:"우창윤", bookPublisher:"웅진지식하우스",
           eventTitle:"이달의 처방전 7 - 평생 가볍게 살아가는 4주 대사 회복 프로젝트",
           reason:"기초대사 저하로 보이는 신호가 여러 항목에서 확인되었습니다. <u>대사 회복 처방</u>이 필요합니다.",
           bookTitle:"살찌지 않는 몸", bookCover:"https://image.yes24.com/goods/181119788/XL",
           bookLink:"https://www.yes24.com/product/goods/181119788",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22041902"},
   back:  {name:"허리·자세",    round:8,  expert:"이대영 원장", color:"#3E6B8A",
+          bookAuthor:"이대영", bookPublisher:"한스미디어",
           eventTitle:"이달의 처방전 8 - 통증 완화를 넘어 '잘 사는 몸'을 위한 척추 재활의 정석",
           reason:"허리와 자세 관련 불편함이 반복적으로 나타났습니다. <u>자세 교정 처방</u>을 권합니다.",
           bookTitle:"100년 쓰는 완벽 허리", bookCover:"https://image.yes24.com/goods/182493078/XL",
           bookLink:"https://www.yes24.com/product/goods/182493078",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22105533"},
   prev:  {name:"질병예방",     round:9,  expert:"오수연 교수", color:"#5A8F7B",
+          bookAuthor:"오수연", bookPublisher:"생각의힘",
           eventTitle:"이달의 처방전 9 - 아프기 전에 챙겨야 할 몸이 좋아하는 숫자들",
           reason:"정기 검진과 예방 관리가 미뤄지고 있는 신호가 확인되었습니다. <u>예방 관리 처방</u>이 우선입니다.",
           bookTitle:"질병 예방 세대", bookCover:"https://image.yes24.com/goods/186939270/XL",
           bookLink:"https://www.yes24.com/product/goods/186939270",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22146151"},
   sleep: {name:"수면",         round:10, expert:"이준용 정신건강의학과 전문의", color:"#4A4E69",
+          bookAuthor:"이준용", bookPublisher:"미래의창",
           eventTitle:"이달의 처방전 10 - 무너진 몸과 마음을 되돌리는 수면의 과학",
           reason:"수면의 질 저하가 전반적인 컨디션에 영향을 주고 있는 것으로 보입니다. <u>숙면 처방</u>이 필요합니다.",
           bookTitle:"자도 자도 피곤한 당신을 위한 수면 처방", bookCover:"https://image.yes24.com/goods/193984774/XL",
           bookLink:"https://www.yes24.com/product/goods/193984774",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22296882"},
   skin:  {name:"피부·알레르기(두드러기)", round:11, expert:"이동훈·강혜련 교수", color:"#C97FA0",
+          bookAuthor:"이동훈, 강혜련", bookPublisher:"시공사",
           eventTitle:"이달의 처방전 11 - 두드러기의 진짜 원인과 해결책",
           reason:"이유 없는 가려움과 피부 트러블이 반복되는 신호가 확인되었습니다. <u>두드러기·알레르기 처방</u>이 필요합니다.",
           bookTitle:"두드러기, 참지 마세요", bookCover:"https://image.yes24.com/goods/194254561/XL",
           bookLink:"https://www.yes24.com/product/goods/194254561",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22340733"},
   aging: {name:"노화·건강한 노년", round:12, expert:"김광일 교수", color:"#7A9E7E",
+          bookAuthor:"김광일", bookPublisher:"청림Life",
           eventTitle:"이달의 처방전 12 - 오래 사는 법보다 중요한 후회 없이 나이 드는 법",
           reason:"나이 듦에 대한 불안과 변화 신호가 확인되었습니다. <u>후회 없이 나이 드는 준비</u>가 필요합니다.",
           bookTitle:"어떻게 나이 들지 배웁니다", bookCover:"https://image.yes24.com/goods/196681853/XL",
           bookLink:"https://www.yes24.com/product/goods/196681853",
           interviewLink:"https://sarak.yes24.com/blog/humanyes24/post-view/22458716"},
   cancer:{name:"암 예방 생활습관", round:13, expert:"강형창 전문의", color:"#A65E4E",
+          bookAuthor:"강형창", bookPublisher:"북웨이브",
           eventTitle:"이달의 처방전 13 - 오늘의 생활 습관이 암을 이기는 몸을 만든다",
           reason:"암 위험을 키우는 생활 습관 신호가 확인되었습니다. <u>일상 습관부터 점검</u>하는 처방이 필요합니다.",
           bookTitle:"암을 이기는 몸", bookCover:"https://image.yes24.com/goods/197055132/XL",
@@ -657,7 +694,21 @@ function show(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
+  postHeight(true);
 }
+
+/* 기획전 페이지에 iframe으로 넣었을 때: 내용 높이를 부모 페이지에 알려 iframe 안 스크롤(이중 스크롤)을 없앤다.
+   부모 페이지 쪽 수신 코드는 별도 안내 파일 참고. 단독으로 열면 아무 동작도 하지 않는다. */
+const IS_EMBEDDED = (function(){ try{ return window.self !== window.top; }catch(e){ return true; } })();
+if(IS_EMBEDDED) document.documentElement.classList.add('embedded');
+function postHeight(screenChanged){
+  if(!IS_EMBEDDED) return;
+  const h = Math.ceil(document.getElementById('app').getBoundingClientRect().height);
+  try{ window.parent.postMessage({type:'rx-test-height', height:h, screenChanged:!!screenChanged}, '*'); }catch(e){}
+}
+window.addEventListener('load', ()=>postHeight(false));
+window.addEventListener('resize', ()=>postHeight(false));
+if(window.ResizeObserver){ new ResizeObserver(()=>postHeight(false)).observe(document.getElementById('app')); }
 
 // 인트로 카드에 문항 주제 아이콘을 나열합니다.
 (function renderIntroIcons(){
@@ -770,10 +821,9 @@ function readableColor(hex){
 }
 
 function fillBook(sfx, cat){
-  document.getElementById('book-cta-round'+sfx).textContent = cat.isUpcoming
-    ? `공개 예정 신규 회차 · ${cat.expert}`
-    : `${cat.round}회차 · ${cat.expert}`;
   document.getElementById('book-cta-title'+sfx).textContent = cat.bookTitle;
+  document.getElementById('book-cta-author'+sfx).textContent = cat.bookAuthor + ' 저';
+  document.getElementById('book-cta-publisher'+sfx).textContent = cat.bookPublisher;
   const coverEl = document.getElementById('book-cover'+sfx);
   coverEl.src = cat.bookCover;
   coverEl.alt = cat.bookTitle;
@@ -784,11 +834,16 @@ function fillBook(sfx, cat){
   const interviewEl = document.getElementById('interview-link'+sfx);
   if(cat.interviewLink){
     interviewEl.href = cat.interviewLink;
-    interviewEl.textContent = `${cat.expert} 서면인터뷰 보기 →`;
+    interviewEl.textContent = '전문가 서면인터뷰 보기';
+    interviewEl.setAttribute('aria-label', `${cat.expert} 서면인터뷰 보기`);
     interviewEl.classList.remove('hidden');
   } else {
     interviewEl.classList.add('hidden');
   }
+}
+
+function eventLine(cat){
+  return cat.eventTitle ? cat.eventTitle : (cat.isUpcoming ? '공개 예정 신규 회차' : '관련 처방전 ' + cat.round + '회차') + ' · ' + cat.expert;
 }
 
 function renderResult(){
@@ -804,32 +859,35 @@ function renderResult(){
   document.getElementById('dx-name').textContent = topCat.name;
   document.getElementById('dx-name').style.color = readableColor(topCat.color);
   document.getElementById('dx-reason').innerHTML = topCat.reason;
+  document.getElementById('dx-event').textContent = eventLine(topCat);
 
   const noteEl = document.getElementById('dx-note');
   if(top.score === 0){
     noteEl.textContent = '뚜렷한 신호가 확인되지 않아 기본 예방 처방을 안내합니다.';
     noteEl.classList.remove('hidden');
-  } else if(top.pct < 50){
-    noteEl.textContent = '여러 항목이 비슷하게 나왔습니다. 아래 2·3순위 처방도 함께 살펴보세요.';
-    noteEl.classList.remove('hidden');
   } else {
     noteEl.classList.add('hidden');
   }
 
+  // 2·3순위: 처방명과 기획전 제목만 (1순위는 위 처방전에 이미 표시)
   const list = document.getElementById('rx-ranklist');
-  list.innerHTML = '';
-  lastTop.forEach((item, i)=>{
+  const others = lastTop.slice(1);
+  // 1위 신호가 약하면(내부 매칭률 50% 미만) 별도 안내 상자 대신 이 제목으로 알린다
+  const label = (top.score > 0 && top.pct < 50) ? '비슷하게 나온 처방도 함께 살펴보세요' : '함께 살펴볼 처방';
+  list.innerHTML = others.length ? `<div class="ranklist-label">${label}</div>` : '';
+  others.forEach((item, i)=>{
     const cat = CATS[item.key];
     const row = document.createElement('div');
     row.className = 'rank-row';
     row.innerHTML = `
-      <div class="rank-num">${i+1}</div>
+      <div class="rank-num">${i+2}</div>
       <div class="rank-body">
         <div class="rank-top"><span style="color:${readableColor(cat.color)}">${cat.name}</span></div>
-        <div class="rank-sub">${cat.eventTitle ? cat.eventTitle : (cat.isUpcoming ? '공개 예정 신규 회차' : '관련 처방전 ' + cat.round + '회차') + ' · ' + cat.expert}</div>
+        <div class="rank-sub" title="${eventLine(cat)}">${eventLine(cat).replace(/^이달의 처방전 \d+ - /,'')}</div>
       </div>`;
     list.appendChild(row);
   });
+  list.classList.toggle('hidden', others.length === 0);
 
   // 처방 도서 영역: 1순위 도서만 처방
   fillBook('', topCat);
