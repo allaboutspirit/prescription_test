@@ -463,11 +463,15 @@
   #dx-event{display:none;}
 
   /* 전문가 한마디 */
-  .dx-quote{margin:8px 0 0;padding:7px 12px;background:var(--paper-alt);border-left:3px solid var(--green);border-radius:0 8px 8px 0;}
+  .dx-quote{margin:14px 0 0;padding:7px 12px;background:var(--paper-alt);border-left:3px solid var(--green);border-radius:0 8px 8px 0;}
   .dx-quote.hidden{display:none;}
   .q-text{display:block;white-space:pre-line;font-size:14px;font-weight:700;line-height:1.55;color:var(--ink);word-break:keep-all;}
   .q-by{display:block;margin-top:2px;font-size:12px;color:var(--ink-soft);}
   .q-by::before{content:"— ";}
+
+  /* 진단·처방 두 문장은 붙이고, 아래 한마디 상자와는 여유 */
+  .dx-reason{line-height:1.6 !important;}
+  .dx-reason .r-rx{margin-top:2px;}
 </style>
 </head>
 <body>
