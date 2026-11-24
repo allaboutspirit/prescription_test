@@ -428,6 +428,12 @@
   .intro-top .intake-label{align-self:center;}
   .intro-title em{font-style:normal;color:var(--green-text);}
   .intro-footnote-bottom{margin:0 0 -6px;text-align:center;}
+
+  /* 톤 A: 밝게 — 페이지 카드(#F7FCFE)처럼 흰 카드로 띄움 */
+  #screen-intro{background:linear-gradient(180deg,#FFFFFF 0%,#F7FCFA 60%,#EEF8F4 100%);}
+  #app{position:relative;}
+  #app::after{content:"";position:absolute;inset:0;border:1.5px solid #B9DDCE;border-radius:20px;pointer-events:none;z-index:20;}
+  .intro-chart{background:#F4FAF7;}
 </style>
 </head>
 <body>
