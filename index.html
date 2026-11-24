@@ -441,7 +441,12 @@
   #screen-result{gap:12px !important;}
   .book-cta{padding:16px 14px !important;}
   .book-cta-body{gap:20px !important;}
+  @media (max-width:440px){ .book-cover{width:162px !important;} }
   #screen-result.has-note .book-cover{width:164px !important;}
+  #screen-result.long-quote .book-cover{width:178px !important;}
+  @media (max-width:440px){ #screen-result.long-quote .book-cover{width:150px !important;} }
+  @media (max-width:400px){ #screen-result.long-quote .book-cover{width:136px !important;} }
+  @media (max-width:380px){ #screen-result.long-quote .book-cover{width:104px !important;} }
   .book-cta-body{align-items:center;}
   @media (max-width:400px){ .book-cover{width:160px !important;} }
   @media (max-width:380px){ .book-cover{width:132px !important;} }
@@ -456,6 +461,13 @@
 
   /* 처방전에서 기획전 제목 줄은 숨김 (상단 롤링카드에서 소개) */
   #dx-event{display:none;}
+
+  /* 전문가 한마디 */
+  .dx-quote{margin:8px 0 0;padding:7px 12px;background:var(--paper-alt);border-left:3px solid var(--green);border-radius:0 8px 8px 0;}
+  .dx-quote.hidden{display:none;}
+  .q-text{display:block;white-space:pre-line;font-size:14px;font-weight:700;line-height:1.55;color:var(--ink);word-break:keep-all;}
+  .q-by{display:block;margin-top:2px;font-size:12px;color:var(--ink-soft);}
+  .q-by::before{content:"— ";}
 </style>
 </head>
 <body>
@@ -520,6 +532,7 @@
         <p class="dx-event" id="dx-event"></p>
       </div>
       <p class="dx-reason" id="dx-reason"></p>
+      <p class="dx-quote hidden" id="dx-quote"><span class="q-text" id="dx-quote-text"></span><span class="q-by" id="dx-quote-by"></span></p>
       <p class="dx-note hidden" id="dx-note"></p>
     </div>
 
@@ -974,7 +987,11 @@ function fillBook(sfx, cat){
   // 저장소에 고화질 표지(covers/)가 있으면 그것을 쓰고, 불러오지 못하면 예스24 이미지로 대체
   coverEl.onerror = null;
   if(cat.coverFile){
-    coverEl.onerror = function(){ this.onerror = null; this.removeAttribute('srcset'); this.src = cat.bookCover; };
+    // sm 폴더 표지가 없으면 → 기존 covers 원본 → 그래도 없으면 예스24 이미지 순으로 대체
+    coverEl.onerror = function(){
+      if(this.hasAttribute('srcset')){ this.removeAttribute('srcset'); this.src = cat.coverFile; return; }
+      this.onerror = null; this.src = cat.bookCover;
+    };
     // 일반 모니터(1배)에는 표시 크기에 맞춰 미리 줄인 선명한 표지, 고밀도 화면(2배 이상)에는 원본
     coverEl.srcset = cat.coverFile.replace('covers/','covers/sm/') + ' 1x, ' + cat.coverFile + ' 2x';
     coverEl.src = cat.coverFile;
@@ -998,6 +1015,22 @@ function fillBook(sfx, cat){
   }
 }
 
+
+// 처방전 속 전문가 한마디 (서면 인터뷰 원문 인용)
+const QUOTES = {
+  glu:    {text:'결국 ‘나에게 맞느냐’가 가장 중요한 기준입니다.', by:'조영민 교수'},
+  diet:   {text:'위고비는 기적의 방법으로 체중을 빼주는 약이 아닙니다.', by:'이성민 의사'},
+  musc:   {text:'몸은 당신을 배신하지 않습니다.', by:'이금호 시니어 운동 전문가'},
+  emer:   {text:'의심되는 순간 즉시 119에 신고하는 것이 가장 중요합니다.', by:'김준성 교수'},
+  back:   {text:'허리 재활은 헬스장이 아니라 뇌에서 시작됩니다.', by:'이대영 원장'},
+  prev:   {text:'운동은 안 해도 나쁘고, 너무 많이 해도 나빠요.', by:'오수연 교수'},
+  aging:  {text:'노년의 삶은 오늘의 삶이 조금씩 쌓여 만들어진 결과입니다.', by:'김광일 교수'},
+  horm:   {text:'중요한 것은 증상이 나타난 뒤 대처하기보다,\n미리 호르몬 균형을 관리하는 것입니다.', by:'안철우 교수'},
+  meta:   {text:'살이 잘 찌는 몸은 몸의 대사가 경직되어 있습니다.', by:'우창윤 교수'},
+  sleep:  {text:'밤이 조금 바뀌면 낮도 따라 바뀝니다.', by:'이준용 정신건강의학과 전문의'},
+  skin:   {text:'대부분은 몸속 면역 체계가 예민해진 것이 진짜 원인입니다.', by:'이동훈 교수'},
+  cancer: {text:'건강은 한 장의 사진이 아니라 한 편의 영화입니다.', by:'강형창 전문의'},
+};
 function eventLine(cat){
   // 회차 표기("이달의 처방전 N - ")는 빼고 기획전 제목만 보여줌
   return cat.eventTitle ? cat.eventTitle.replace(/^이달의 처방전\s*\d+\s*-\s*/, '') : (cat.isUpcoming ? '공개 예정 신규 회차' : '관련 처방전 ' + cat.round + '회차') + ' · ' + cat.expert;
@@ -1018,6 +1051,13 @@ function renderResult(){
   // 처방 사유: '|' 앞은 확인된 신호, 뒤는 처방. 두 문단으로 나누고, 문단 안 줄바꿈(<br>)은 의미 단위로 미리 넣어 둠
   const [obs, rx] = topCat.reason.split('|');
   document.getElementById('dx-reason').innerHTML = `<span class="r-obs">${obs}</span><span class="r-rx">${rx||''}</span>`;
+  const qEl = document.getElementById('dx-quote');
+  const q = (top.score > 0) ? QUOTES[top.key] : null;
+  qEl.classList.toggle('hidden', !q);
+  // 두 줄이 되는 긴 인용은 표지를 조금 줄여 칸 안에 맞춤
+  document.getElementById('screen-result').classList.toggle('long-quote', !!q && q.text.replace(/\n/g,' ').length > 33);
+  if(q){ document.getElementById('dx-quote-text').textContent = '“' + q.text + '”';
+         document.getElementById('dx-quote-by').textContent = q.by; }
   document.getElementById('dx-event').textContent = eventLine(topCat);
 
   const noteEl = document.getElementById('dx-note');
